@@ -41,25 +41,25 @@ const Navbar = () => {
           <a href="#" className={`text-3xl font-bold font-poppins ${
             isScrolled || isMobileMenuOpen ? 'text-event-blue' : 'text-white'
           }`}>
-            CORRIDA<span className="text-event-orange">XPTO</span>
+            CORRIDA<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-event-blue-light">XPTO</span>
           </a>
           
           <div className="hidden md:flex space-x-6 items-center">
             <a href="#about" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-gray-700 hover:text-event-blue' : 'text-gray-200 hover:text-white'
+              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
             }`}>Sobre</a>
             <a href="#timeline" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-gray-700 hover:text-event-blue' : 'text-gray-200 hover:text-white'
+              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
             }`}>Cronograma</a>
             <a href="#course" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-gray-700 hover:text-event-blue' : 'text-gray-200 hover:text-white'
+              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
             }`}>Percurso</a>
             <a href="#sponsors" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-gray-700 hover:text-event-blue' : 'text-gray-200 hover:text-white'
+              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
             }`}>Patrocinadores</a>
             <a 
               href="#registration" 
-              className="bg-event-orange hover:bg-orange-600 text-white font-semibold py-2 px-5 rounded-lg cta-button text-sm"
+              className="bg-gradient-to-r from-event-blue-dark to-event-blue hover:from-event-royal hover:to-event-blue-dark text-white font-semibold py-2 px-5 rounded-lg cta-button text-sm"
             >
               Inscreva-se
             </a>
@@ -69,7 +69,7 @@ const Navbar = () => {
             <button 
               onClick={toggleMobileMenu}
               className={`mobile-menu-button focus:outline-none ${
-                isScrolled ? 'text-gray-700' : 'text-gray-200 hover:text-white'
+                isScrolled ? 'text-event-blue-dark' : 'text-gray-200 hover:text-white'
               }`}
               aria-label="Menu"
             >
@@ -85,11 +85,11 @@ const Navbar = () => {
       <div className={`md:hidden bg-white shadow-lg absolute w-full transition-all duration-300 ease-in-out ${
         isMobileMenuOpen ? 'block' : 'hidden'
       }`}>
-        <a href="#about" onClick={closeMobileMenu} className="block py-3 px-6 text-gray-700 hover:bg-gray-100">Sobre</a>
-        <a href="#timeline" onClick={closeMobileMenu} className="block py-3 px-6 text-gray-700 hover:bg-gray-100">Cronograma</a>
-        <a href="#course" onClick={closeMobileMenu} className="block py-3 px-6 text-gray-700 hover:bg-gray-100">Percurso</a>
-        <a href="#sponsors" onClick={closeMobileMenu} className="block py-3 px-6 text-gray-700 hover:bg-gray-100">Patrocinadores</a>
-        <a href="#registration" onClick={closeMobileMenu} className="block py-3 px-6 bg-event-orange text-white text-center font-semibold hover:bg-orange-600">Inscreva-se</a>
+        <a href="#about" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Sobre</a>
+        <a href="#timeline" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Cronograma</a>
+        <a href="#course" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Percurso</a>
+        <a href="#sponsors" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Patrocinadores</a>
+        <a href="#registration" onClick={closeMobileMenu} className="block py-3 px-6 bg-gradient-to-r from-event-blue-dark to-event-blue text-white text-center font-semibold hover:from-event-royal hover:to-event-blue-dark">Inscreva-se</a>
       </div>
     </header>
   );
