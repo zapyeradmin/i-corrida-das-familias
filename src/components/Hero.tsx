@@ -7,7 +7,7 @@ const Hero = () => {
       id="hero" 
       className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay"
       style={{ 
-        backgroundImage: "url('https://images.unsplash.com/photo-1509052389506-a0458d1e2097?q=80&w=1920&auto=format&fit=crop')" 
+        backgroundImage: "url('/lovable-uploads/d503ab6c-5760-437a-bf07-6a33e96b3b2b.png')" 
       }}
     >
       <div className="hero-content text-center text-white p-4 md:p-8">
