@@ -58,7 +58,7 @@ const CourseMap = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Sinalização e Apoio</h4>
                   <p className="text-gray-600">
-                    Percurso totalmente sinalizado, com staff dedicado e pontos de hidratação 1Km.
+                    Percurso sinalizado, com staff dedicado e pontos de hidratação 1Km.
                   </p>
                 </div>
               </div>
