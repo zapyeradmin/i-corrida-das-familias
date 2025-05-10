@@ -52,7 +52,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contatos</h4>
             <div className="flex space-x-4">
-              </a>
+              {/* Social media links can be added here */}
             </div>
             <p className="mt-4 text-sm">contato@corridaxpto.com.br</p>
           </div>
