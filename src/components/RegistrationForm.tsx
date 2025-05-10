@@ -75,6 +75,24 @@ const RegistrationForm = () => {
     return true;
   };
   
+  const sendConfirmationEmail = async (name: string, email: string) => {
+    try {
+      const response = await supabase.functions.invoke('send-confirmation-email', {
+        body: { name, email },
+      });
+      
+      if (response.error) {
+        throw response.error;
+      }
+      
+      console.log('Email de confirmação enviado:', response.data);
+    } catch (error) {
+      console.error('Erro ao enviar email de confirmação:', error);
+      // Não iremos mostrar essa mensagem para o usuário para não afetar a experiência
+      // mas vamos registrar o erro no console
+    }
+  };
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -104,6 +122,9 @@ const RegistrationForm = () => {
         .select();
       
       if (error) throw error;
+      
+      // Send confirmation email
+      await sendConfirmationEmail(formData.fullName, formData.email);
       
       // Success message
       toast.success("Inscrição realizada com sucesso! Redirecionando para a página de pagamento...");
