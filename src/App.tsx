@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import PixPayment from "./pages/PixPayment";
 import CardPayment from "./pages/CardPayment";
+import SiteDesign from "./pages/SiteDesign";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AuthProvider } from "./hooks/useAuth";
 
@@ -31,6 +32,7 @@ const App = () => (
             {/* Protected routes */}
             <Route element={<PrivateRoute />}>
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/site-design" element={<SiteDesign />} />
             </Route>
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

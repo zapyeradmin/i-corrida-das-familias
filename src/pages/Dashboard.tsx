@@ -3,10 +3,13 @@ import React from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useAthletesData } from '@/hooks/useAthletesData';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import AthletesContent from '@/components/dashboard/AthletesContent';
 import DashboardFooter from '@/components/dashboard/DashboardFooter';
+import { Palette } from 'lucide-react';
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
@@ -42,6 +45,18 @@ const Dashboard = () => {
 
       {/* Main content */}
       <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Admin Actions */}
+        <div className="mb-8">
+          <div className="flex justify-end">
+            <Link to="/site-design">
+              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Palette className="h-4 w-4 mr-2" />
+                Design do Site
+              </Button>
+            </Link>
+          </div>
+        </div>
+
         {/* Stats Section with modern cards */}
         <DashboardStats
           totalAthletes={totalAthletes}
