@@ -44,7 +44,7 @@ const CourseMap = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Trajeto Principal</h4>
                   <p className="text-gray-600">
-                    Largada e chegada na Praça Central, passando pela Av. Principal, Rua das Palmeiras e Av. Beira Rio.
+                    Largada e chegada na Igreja Matriz do Rosário - Rua Cornélio Soares, Rua Joca Magalhães, Rua José Alves da Silveira, Avenida Afonso Magalhães (retorno no cruzamento com a Rua Neco Maranhão, Próximo à Drogaria DjaFarma), Rua Enock Ignácio de Oliveira, Rua Joaquim Conrado de Lorena e Sá, Retorno à Rua Cornélio Soares e chegada na Igreja Matriz do Rosário - Rua Cornélio Soares.
                   </p>
                 </div>
               </div>
