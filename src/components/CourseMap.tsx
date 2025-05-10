@@ -16,7 +16,7 @@ const CourseMap = () => {
           <div className="order-2 lg:order-1">
             <div className="custom-card overflow-hidden">
               <img 
-                src="https://placehold.co/600x500/1e3a8a/ffffff?text=Mapa+Detalhado+do+Percurso" 
+                src="/lovable-uploads/7e0260b1-64d8-41c9-bdce-91f558647522.png" 
                 alt="Mapa do Percurso da Corrida de 5km" 
                 className="w-full h-auto object-cover"
               />
