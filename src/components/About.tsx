@@ -3,17 +3,8 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section 
-      id="about" 
-      className="py-20 md:py-28 relative bg-white"
-      style={{
-        backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8)), url('/lovable-uploads/4854a838-5657-477e-a7d8-140ad41dc809.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed"
-      }}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="about" className="py-20 md:py-28 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
           Sobre o <span className="gradient-text">Evento</span>
         </h2>
@@ -24,13 +15,13 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
             <img 
-              src="/lovable-uploads/da0135c3-6cb9-43d1-82f0-fcbe2f77da39.png" 
+              src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop" 
               alt="Atletas correndo em evento" 
               className="w-full h-auto object-cover"
             />
           </div>
           
-          <div className="text-gray-700 bg-white bg-opacity-90 p-6 rounded-lg shadow-sm">
+          <div className="text-gray-700">
             <h3 className="text-3xl font-semibold text-gray-800 mb-6 font-poppins">
               Uma Experiência Única de Alegria, Fé e Saúde
             </h3>
