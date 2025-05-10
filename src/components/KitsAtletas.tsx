@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Medal, Droplet, Ticket, TShirt } from 'lucide-react';
+import { Medal, Droplet, Ticket, Shirt } from 'lucide-react';
 
 const KitsAtletas = () => {
   return (
@@ -34,7 +34,7 @@ const KitsAtletas = () => {
             <Card className="mb-4 hover:shadow-lg transition-all border-l-4 border-l-event-blue">
               <CardContent className="p-4 flex items-start">
                 <div className="flex-shrink-0 h-8 w-8 rounded-full bg-event-orange text-white flex items-center justify-center mr-4 mt-1">
-                  <TShirt className="h-4 w-4" />
+                  <Shirt className="h-4 w-4" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">Camiseta Oficial</h4>
