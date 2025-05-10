@@ -19,7 +19,7 @@ const Index = () => {
         <Timeline />
         <CourseMap />
         <Sponsors />
-        <div className="registration-section py-12 md:py-16">
+        <div className="registration-section py-12 md:py-16" id="registration">
           <RegistrationForm />
         </div>
       </main>
