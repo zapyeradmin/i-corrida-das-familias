@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, CheckCircle2, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
-import { useState } from "react";
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { Separator } from '@/components/ui/separator';
 
 const PixPayment = () => {
   const [copied, setCopied] = useState(false);
@@ -21,35 +23,36 @@ const PixPayment = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Header with navigation similar to main page */}
-      <header className="bg-blue-600 text-white py-4 shadow-md">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold">Corrida das Famílias 2025</h1>
-            <a href="/" className="text-white hover:text-blue-200 transition">
-              Voltar ao Início
-            </a>
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
+      <Navbar />
+      
+      <main className="flex-grow container mx-auto px-4 py-16 mt-16">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <h1 className="text-3xl md:text-4xl font-bold mb-3 text-blue-800 font-poppins">
+              Pagamento <span className="text-event-blue">PIX</span>
+            </h1>
+            <p className="text-gray-600 max-w-lg mx-auto">
+              Complete seu pagamento e envie seu comprovante para confirmar sua inscrição na 1ª Corrida das Famílias 2025
+            </p>
+            <div className="mt-4">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800">
+                <span className="mr-2">●</span> Aguardando pagamento
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 text-blue-800">
-            Pagamento PIX
-          </h1>
-
-          <Card className="shadow-lg border-t-4 border-blue-600 mb-8">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">Inscrição Individual</CardTitle>
+          <Card className="shadow-xl border-t-4 border-event-blue mb-8 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-white">
+              <CardTitle className="text-2xl text-center text-blue-800">Inscrição Individual</CardTitle>
               <CardDescription className="text-center text-base">
                 1ª Corrida das Famílias 2025
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col items-center space-y-6">
+            
+            <CardContent className="flex flex-col items-center space-y-8 p-8">
               {/* QR Code */}
-              <div className="bg-white p-3 rounded-lg shadow-sm">
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 transition-all hover:shadow-lg">
                 <img 
                   src="/lovable-uploads/da0135c3-6cb9-43d1-82f0-fcbe2f77da39.png" 
                   alt="QR Code PIX" 
@@ -59,51 +62,64 @@ const PixPayment = () => {
               
               {/* PIX Key */}
               <div className="w-full">
-                <p className="text-gray-600 text-sm mb-1 text-center">Chave PIX:</p>
-                <div className="flex items-center justify-center border rounded-md p-3 bg-gray-50">
-                  <code className="text-sm bg-transparent flex-1 overflow-x-auto whitespace-nowrap px-2">
+                <p className="text-gray-600 text-sm mb-2 text-center font-medium">Chave PIX:</p>
+                <div className="flex items-center justify-between border rounded-lg p-4 bg-white shadow-sm hover:shadow transition-shadow">
+                  <code className="text-sm bg-transparent flex-1 overflow-x-auto whitespace-nowrap px-2 text-gray-700 font-mono">
                     {pixKey}
                   </code>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     onClick={handleCopyPixKey} 
-                    className="ml-2 flex items-center"
+                    className="ml-2 flex items-center bg-white hover:bg-blue-50 transition-colors"
                   >
                     {copied ? (
-                      <CheckCircle2 className="h-4 w-4 text-green-500" />
+                      <CheckCircle2 className="h-4 w-4 text-green-500 mr-1" />
                     ) : (
-                      <Copy className="h-4 w-4" />
+                      <Copy className="h-4 w-4 mr-1" />
                     )}
-                    <span className="ml-1">{copied ? "Copiado" : "Copiar"}</span>
+                    <span>{copied ? "Copiado!" : "Copiar"}</span>
                   </Button>
                 </div>
               </div>
               
+              <Separator className="my-6" />
+              
               {/* Instructions */}
-              <div className="bg-blue-50 p-4 rounded-md w-full text-sm">
-                <h3 className="font-semibold text-blue-800 mb-2">Instruções:</h3>
-                <ol className="list-decimal pl-5 space-y-2 text-gray-700">
-                  <li>Escaneie o QR Code ou copie a chave PIX acima</li>
-                  <li>Realize o pagamento no valor da inscrição</li>
-                  <li>Após o pagamento, envie o comprovante por WhatsApp junto com as informações (Nome e CPF)</li>
-                  <li>Aguarde a confirmação da sua inscrição</li>
+              <div className="bg-blue-50 p-6 rounded-lg w-full text-sm border border-blue-100">
+                <h3 className="font-semibold text-blue-800 mb-3 flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Instruções para pagamento:
+                </h3>
+                <ol className="list-decimal pl-5 space-y-3 text-gray-700">
+                  <li>Escaneie o QR Code acima com o aplicativo do seu banco</li>
+                  <li>Ou copie a chave PIX e cole no seu aplicativo bancário</li>
+                  <li>Realize o pagamento no valor da sua inscrição</li>
+                  <li>Guarde o comprovante para enviar por WhatsApp</li>
                 </ol>
               </div>
             </CardContent>
-            <CardFooter className="flex flex-col space-y-4">
-              <div className="bg-yellow-50 p-3 rounded-md w-full text-sm">
-                <p className="font-medium text-yellow-800">Observação importante:</p>
-                <p className="text-gray-700">
-                  Ao realizar o pagamento, enviar o comprovante e as informações de Nome, CPF do inscrito para o WhatsApp: (87) 99670-9355.
+            
+            <CardFooter className="flex flex-col space-y-6 p-6 bg-gradient-to-b from-white to-blue-50">
+              <div className="bg-yellow-50 p-4 rounded-lg w-full text-sm border border-yellow-100">
+                <p className="font-medium text-yellow-800 flex items-center mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  Observação importante:
                 </p>
-                <p className="text-gray-700 mt-2 font-medium">
+                <p className="text-gray-700 ml-7">
+                  Ao realizar o pagamento, enviar o comprovante e as informações de <span className="font-semibold">Nome</span> e <span className="font-semibold">CPF</span> do inscrito para o WhatsApp: <span className="font-semibold">(87) 99670-9355</span>.
+                </p>
+                <p className="text-gray-700 mt-3 font-medium text-center">
                   A inscrição somente será aprovada após confirmação.
                 </p>
               </div>
               
               <Button 
-                className="w-full bg-green-600 hover:bg-green-700"
+                className="w-full bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-xl transition-all py-6"
                 size="lg"
                 onClick={() => window.open("http://wa.me/5587996709355", "_blank")}
               >
@@ -115,12 +131,7 @@ const PixPayment = () => {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8 mt-12">
-        <div className="container mx-auto px-4 text-center">
-          <p>© 2025 Corrida das Famílias. Todos os direitos reservados.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
