@@ -183,7 +183,7 @@ const Auth = () => {
         </Card>
 
         <div className="text-center mt-8 text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Corrida XPTO. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Corrida das Famílias. por Zapyer Soluções em Tecnologia. Todos os direitos reservados.</p>
         </div>
       </div>
     </div>
