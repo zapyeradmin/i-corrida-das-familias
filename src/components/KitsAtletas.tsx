@@ -17,7 +17,7 @@ const KitsAtletas = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
             <img 
-              src="public/lovable-uploads/5fc9baf1-9a5d-4388-9bb4-43bad24e8d45.png" 
+              src="public/lovable-uploads/15ae1cf0-f12b-429d-8b32-13c96a53b803.png" 
               alt="Kit dos Atletas - Camisa, número e garrafa de água" 
               className="w-full h-auto object-contain"
             />
