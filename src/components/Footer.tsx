@@ -54,7 +54,9 @@ const Footer = () => {
             <div className="flex space-x-4">
               {/* Social media links can be added here */}
             </div>
-            <p className="mt-4 text-sm">contato@corridaxpto.com.br</p>
+            <p className="mt-4 text-sm">Equipe Dirigente do ECC do Rosário 2025</p>
+            <p className="mt-4 text-sm">Telefone/WhatsApp: (87) 99670-9355</p>
+            <p className="mt-4 text-sm">E-mail: corridadasfamiliaseccrosario@gmail.com</p>
           </div>
         </div>
         
