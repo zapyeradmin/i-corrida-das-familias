@@ -37,7 +37,7 @@ const Hero = () => {
                 d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" 
               />
             </svg>
-            Praça Central da Cidade
+            Igreja Matriz do Rosário
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight font-poppins">
