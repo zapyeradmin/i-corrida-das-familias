@@ -198,6 +198,10 @@ export const useAthletesData = () => {
   const pendingPayments = athletes.filter(a => a.payment_status === 'PENDING').length;
   const confirmedPayments = athletes.filter(a => a.payment_status === 'CONFIRMED').length;
   
+  // Calculate financial metrics
+  const confirmedRevenue = confirmedPayments * registrationFee;
+  const pendingRevenue = pendingPayments * registrationFee;
+  
   // Filter athletes based on search term and payment status
   const filteredAthletes = athletes.filter(athlete => {
     const matchesSearch = athlete.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -224,6 +228,8 @@ export const useAthletesData = () => {
     totalRevenue,
     pendingPayments,
     confirmedPayments,
+    confirmedRevenue,
+    pendingRevenue,
     formatCurrency,
     formatDate,
     mapGender,

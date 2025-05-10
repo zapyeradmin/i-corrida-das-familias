@@ -22,6 +22,8 @@ const Dashboard = () => {
     totalRevenue,
     pendingPayments,
     confirmedPayments,
+    confirmedRevenue,
+    pendingRevenue,
     formatCurrency,
     formatDate,
     mapGender,
@@ -39,7 +41,7 @@ const Dashboard = () => {
       <DashboardHeader userEmail={user?.email} signOut={signOut} />
 
       {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Section with modern cards */}
         <DashboardStats
           totalAthletes={totalAthletes}
@@ -47,6 +49,8 @@ const Dashboard = () => {
           pendingPayments={pendingPayments}
           confirmedPayments={confirmedPayments}
           registrationFee={registrationFee}
+          confirmedRevenue={confirmedRevenue}
+          pendingRevenue={pendingRevenue}
           formatCurrency={formatCurrency}
         />
 

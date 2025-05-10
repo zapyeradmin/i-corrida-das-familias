@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Users, CreditCard, Clock } from 'lucide-react';
+import { Users, CreditCard, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import StatsCard from './StatsCard';
 
 interface DashboardStatsProps {
@@ -9,6 +9,8 @@ interface DashboardStatsProps {
   pendingPayments: number;
   confirmedPayments: number;
   registrationFee: number;
+  confirmedRevenue: number;
+  pendingRevenue: number;
   formatCurrency: (value: number) => string;
 }
 
@@ -18,10 +20,12 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
   pendingPayments,
   confirmedPayments,
   registrationFee,
+  confirmedRevenue,
+  pendingRevenue,
   formatCurrency
 }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
       {/* Number of Registrations */}
       <StatsCard
         title="Inscrições"
@@ -33,7 +37,7 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
 
       {/* Total Revenue */}
       <StatsCard
-        title="Arrecadação"
+        title="Arrecadação Total"
         value={formatCurrency(totalRevenue)}
         description={`Valor total (${formatCurrency(registrationFee)} por inscrição)`}
         icon={<CreditCard size={18} className="text-green-500" />}
@@ -41,6 +45,26 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
         valueClassName="text-green-600"
       />
 
+      {/* Confirmed Revenue */}
+      <StatsCard
+        title="Arrecadação Confirmada"
+        value={formatCurrency(confirmedRevenue)}
+        description="Valor total de pagamentos confirmados"
+        icon={<CheckCircle size={18} className="text-blue-500" />}
+        borderColor="border-t-blue-500"
+        valueClassName="text-blue-600"
+      />
+
+      {/* Pending Revenue */}
+      <StatsCard
+        title="Arrecadação Pendente"
+        value={formatCurrency(pendingRevenue)}
+        description="Valor total de pagamentos pendentes"
+        icon={<AlertCircle size={18} className="text-orange-500" />}
+        borderColor="border-t-orange-500"
+        valueClassName="text-orange-600"
+      />
+      
       {/* Pending Payments */}
       <StatsCard
         title="Pagamentos Pendentes"
