@@ -140,7 +140,7 @@ const RegistrationForm = () => {
           Inscreva-se e <span className="text-orange-400">Participe!</span>
         </h2>
         <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto">
-          Não perca tempo! Preencha o formulário abaixo e garanta sua vaga na Corrida Urbana XPTO. Vagas limitadas!
+          Não perca tempo! Preencha o formulário abaixo e garanta sua vaga na Corrida das Famílias. Vagas limitadas!
         </p>
         
         <form 
