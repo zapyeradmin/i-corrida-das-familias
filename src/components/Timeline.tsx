@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Button } from "@/components/ui/button";
 
 const Timeline = () => {
   return (
@@ -76,6 +77,20 @@ const Timeline = () => {
                 <p className="text-gray-600">
                   Confira os resultados oficiais e as fotos do evento no Instagram @eccrosariost.
                 </p>
+                <div className="mt-4 text-center">
+                  <Button 
+                    className="bg-event-blue hover:bg-event-blue-dark text-white font-medium"
+                    asChild
+                  >
+                    <a 
+                      href="https://drive.google.com/drive/folders/1NNLVapIcwc90hJ5UzN5b-B0wbZIDacyz?usp=sharing" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Baixe suas Fotos Aqui
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
