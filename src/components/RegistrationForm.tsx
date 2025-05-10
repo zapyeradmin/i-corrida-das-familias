@@ -77,19 +77,23 @@ const RegistrationForm = () => {
   
   const sendConfirmationEmail = async (name: string, email: string) => {
     try {
+      console.log(`Attempting to send confirmation email to ${email} for ${name}`);
+      
       const response = await supabase.functions.invoke('send-confirmation-email', {
         body: { name, email },
       });
       
       if (response.error) {
+        console.error('Error response from email function:', response.error);
         throw response.error;
       }
       
-      console.log('Email de confirmação enviado:', response.data);
+      console.log('Email confirmation response:', response.data);
+      return { success: true, data: response.data };
     } catch (error) {
-      console.error('Erro ao enviar email de confirmação:', error);
-      // Não iremos mostrar essa mensagem para o usuário para não afetar a experiência
-      // mas vamos registrar o erro no console
+      console.error('Exception when sending confirmation email:', error);
+      // Log the error but don't show it to the user
+      return { success: false, error };
     }
   };
   
@@ -123,8 +127,15 @@ const RegistrationForm = () => {
       
       if (error) throw error;
       
-      // Send confirmation email
-      await sendConfirmationEmail(formData.fullName, formData.email);
+      // Send confirmation email with better error handling
+      const emailResult = await sendConfirmationEmail(formData.fullName, formData.email);
+      if (!emailResult.success) {
+        console.warn('Email could not be sent, but registration was successful');
+        // Registration was successful, so we'll still treat this as a success
+        // but log the warning for debugging
+      } else {
+        console.log('Email sent successfully');
+      }
       
       // Success message
       toast.success("Inscrição realizada com sucesso! Redirecionando para a página de pagamento...");
