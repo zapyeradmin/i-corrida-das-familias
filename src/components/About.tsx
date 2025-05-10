@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 const About = () => {
-  return (
-    <section id="about" className="py-20 md:py-28 bg-white">
+  return <section id="about" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
           Sobre o <span className="gradient-text">Evento</span>
@@ -14,11 +11,7 @@ const About = () => {
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop" 
-              alt="Atletas correndo em evento" 
-              className="w-full h-auto object-cover"
-            />
+            <img alt="Atletas correndo em evento" className="w-full h-auto object-cover" src="/lovable-uploads/d260d3ef-4cb5-4329-827a-17e41e19a643.jpg" />
           </div>
           
           <div className="text-gray-700">
@@ -77,8 +70,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
