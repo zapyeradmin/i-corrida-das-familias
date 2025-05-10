@@ -1,26 +1,17 @@
-
 import React, { useEffect, useState } from 'react';
-
 const Footer = () => {
   const [currentYear, setCurrentYear] = useState<number>(2025);
-
   useEffect(() => {
     // Update with the actual current year
     const year = new Date().getFullYear();
     setCurrentYear(year);
   }, []);
-
-  return (
-    <footer className="bg-gradient-to-br from-event-royal to-slate-900 text-gray-300 py-16">
+  return <footer className="bg-gradient-to-br from-event-royal to-slate-900 text-gray-300 py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div className="mb-4">
-              <img 
-                src="/lovable-uploads/d7887a43-bd04-4b1b-94e9-df52c5caa08c.png" 
-                alt="Corrida das Famílias Logo" 
-                className="h-12 w-auto"
-              />
+              <img alt="Corrida das Famílias Logo" className="h-12 w-auto" src="/lovable-uploads/160b35a3-fbc7-4e99-887f-74e8b51f1f29.png" />
             </div>
             <p className="text-sm">
               Este evento marca o início de uma nova tradição em Serra Talhada e região, reunindo famílias em uma celebração de Fé, saúde, esporte e união.
@@ -69,14 +60,12 @@ const Footer = () => {
             &copy; {currentYear} Corrida das Famílias. por Zapyer Soluções em Tecnologia. Todos os direitos reservados. 
             Desenvolvido com 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline mx-1 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/>
+              <path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" />
             </svg>
             .
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
