@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Medal, Droplet, Ticket, Shirt } from 'lucide-react';
-
 const KitsAtletas = () => {
-  return (
-    <section id="kits" className="py-20 md:py-28 bg-white">
+  return <section id="kits" className="py-20 md:py-28 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
           Kit dos <span className="gradient-text">Atletas</span>
@@ -16,11 +13,7 @@ const KitsAtletas = () => {
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
-            <img 
-              src="public/lovable-uploads/15ae1cf0-f12b-429d-8b32-13c96a53b803.png" 
-              alt="Kit dos Atletas - Camisa, número e garrafa de água" 
-              className="w-full h-auto object-contain"
-            />
+            <img alt="Kit dos Atletas - Camisa, número e garrafa de água" className="w-full h-auto object-contain" src="/lovable-uploads/8d9963c7-ec7f-4e2a-b1ad-d1f5c9ee9f33.jpg" />
           </div>
           
           <div className="text-gray-700">
@@ -89,8 +82,6 @@ const KitsAtletas = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default KitsAtletas;
