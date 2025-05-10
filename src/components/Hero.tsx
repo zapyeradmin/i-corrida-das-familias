@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="hero-content text-center text-white p-4 md:p-8">
         <div className="mb-6">
           <span className="bg-gradient-to-r from-event-blue to-event-blue-light text-white text-sm font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md">
-            25 de Outubro de 2025
+            15 de junho de 2025
           </span>
           <span className="mx-2 text-gray-300 hidden sm:inline">|</span>
           <span className="text-gray-200 text-sm font-medium block sm:inline mt-2 sm:mt-0">
