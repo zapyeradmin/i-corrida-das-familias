@@ -53,6 +53,13 @@ const PixPayment = () => {
             </CardHeader>
             
             <CardContent className="flex flex-col items-center space-y-6 md:space-y-8 p-4 md:p-8">
+              {/* Payment Amount */}
+              <div className="bg-blue-600 text-white w-full py-3 px-4 rounded-lg text-center shadow-md">
+                <h3 className="text-lg md:text-xl font-semibold">Valor da Inscrição</h3>
+                <p className="text-2xl md:text-3xl font-bold mt-1 md:mt-2">R$ 47,00</p>
+                <p className="text-xs md:text-sm mt-1 opacity-90">Ao realizar o PIX, insira este valor exato</p>
+              </div>
+              
               {/* QR Code */}
               <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100 transition-all hover:shadow-lg">
                 <img 
@@ -98,7 +105,7 @@ const PixPayment = () => {
                 <ol className="list-decimal pl-5 space-y-2 md:space-y-3 text-gray-700">
                   <li>Escaneie o QR Code acima com o aplicativo do seu banco</li>
                   <li>Ou copie a chave PIX e cole no seu aplicativo bancário</li>
-                  <li>Realize o pagamento no valor da sua inscrição</li>
+                  <li><strong>Realize o pagamento no valor de R$ 47,00</strong></li>
                   <li>Guarde o comprovante para enviar por WhatsApp</li>
                 </ol>
               </div>
