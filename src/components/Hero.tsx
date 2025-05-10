@@ -1,8 +1,35 @@
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+
 const Hero = () => {
-  return <section id="hero" className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay" style={{
-    backgroundImage: "url('/lovable-uploads/5ee1b807-0626-4575-bef4-27435d64a983.png')"
-  }}>
+  const [backgroundImage, setBackgroundImage] = useState('/lovable-uploads/5ee1b807-0626-4575-bef4-27435d64a983.png');
+  
+  // In a real implementation, we would fetch the hero image from Supabase
+  // useEffect(() => {
+  //   const fetchSettings = async () => {
+  //     const { data, error } = await supabase
+  //       .from('site_settings')
+  //       .select('value')
+  //       .eq('key', 'hero_image')
+  //       .single();
+  //     
+  //     if (data && !error) {
+  //       setBackgroundImage(data.value);
+  //     }
+  //   };
+  //   
+  //   fetchSettings();
+  // }, []);
+
+  return (
+    <section 
+      id="hero" 
+      className="relative bg-cover bg-center min-h-screen flex items-center justify-center hero-overlay" 
+      style={{
+        backgroundImage: `url('${backgroundImage}')`
+      }}
+    >
       <div className="hero-content text-center text-white p-4 md:p-8 max-w-5xl mx-auto">
         <div className="mb-6 animate-fade-in">
           <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
@@ -46,6 +73,8 @@ const Hero = () => {
           </svg>
         </a>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;

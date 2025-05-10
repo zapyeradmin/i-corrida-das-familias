@@ -1,26 +1,55 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+import { supabase } from '@/integrations/supabase/client';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+interface Sponsor {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
+
 const Sponsors = () => {
-  // Generate placeholder sponsors with different colors
-  const colors = [
-    '3B82F6', '10B981', 'F59E0B', 'EC4899', 
-    '8B5CF6', '6366F1', 'D946EF', '0EA5E9', 
-    'F97316', 'EF4444'
-  ];
-  
-  const sponsors = Array.from({ length: 20 }, (_, i) => {
-    const colorIndex = i % colors.length;
-    return {
-      id: i + 1,
-      name: `Patrocinador ${i + 1}`,
-      imageUrl: `https://placehold.co/220x120/${colors[colorIndex]}/FFFFFF?text=Patrocinador+${i + 1}`
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+
+  useEffect(() => {
+    // Generate placeholder sponsors with different colors
+    const colors = [
+      '3B82F6', '10B981', 'F59E0B', 'EC4899', 
+      '8B5CF6', '6366F1', 'D946EF', '0EA5E9', 
+      'F97316', 'EF4444'
+    ];
+    
+    const loadSponsors = async () => {
+      // In a real implementation, we would fetch sponsors from Supabase
+      // const { data, error } = await supabase
+      //   .from('sponsors')
+      //   .select('*')
+      //   .order('id', { ascending: true });
+      // 
+      // if (data && !error) {
+      //   setSponsors(data);
+      //   return;
+      // }
+      
+      // For now, load placeholders
+      const initialSponsors = Array.from({ length: 20 }, (_, i) => {
+        const colorIndex = i % colors.length;
+        return {
+          id: i + 1,
+          name: `Patrocinador ${i + 1}`,
+          imageUrl: `https://placehold.co/220x120/${colors[colorIndex]}/FFFFFF?text=Patrocinador+${i + 1}`
+        };
+      });
+      
+      setSponsors(initialSponsors);
     };
-  });
+    
+    loadSponsors();
+  }, []);
 
   return (
     <section id="sponsors" className="pt-20 md:pt-28 pb-16 md:pb-20 bg-gray-100 overflow-hidden">
