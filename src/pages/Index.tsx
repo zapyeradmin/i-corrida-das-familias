@@ -3,6 +3,7 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import KitsAtletas from '@/components/KitsAtletas';
 import Timeline from '@/components/Timeline';
 import CourseMap from '@/components/CourseMap';
 import Sponsors from '@/components/Sponsors';
@@ -16,6 +17,7 @@ const Index = () => {
       <Hero />
       <main>
         <About />
+        <KitsAtletas />
         <Timeline />
         <CourseMap />
         <Sponsors />

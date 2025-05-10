@@ -38,6 +38,7 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
           <a href="#about" className="nav-link text-white hover:text-blue-300 transition-colors">Sobre</a>
+          <a href="#kits" className="nav-link text-white hover:text-blue-300 transition-colors">Kits</a>
           <a href="#timeline" className="nav-link text-white hover:text-blue-300 transition-colors">Cronograma</a>
           <a href="#course" className="nav-link text-white hover:text-blue-300 transition-colors">Percurso</a>
           <a href="#sponsors" className="nav-link text-white hover:text-blue-300 transition-colors">Patrocinadores</a>
@@ -63,6 +64,7 @@ const Navbar = () => {
         <div className="md:hidden bg-gray-900 bg-opacity-95 backdrop-blur-sm">
           <div className="container mx-auto px-4 py-3 space-y-2">
             <a href="#about" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Sobre</a>
+            <a href="#kits" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Kits</a>
             <a href="#timeline" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Cronograma</a>
             <a href="#course" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Percurso</a>
             <a href="#sponsors" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Patrocinadores</a>
