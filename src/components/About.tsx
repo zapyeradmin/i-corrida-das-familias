@@ -24,7 +24,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="custom-card overflow-hidden">
             <img 
-              src="/lovable-uploads/51751800-3662-4c39-8c64-aa90483dac55.png" 
+              src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=600&auto=format&fit=crop" 
               alt="Atletas correndo em evento" 
               className="w-full h-auto object-cover"
             />
