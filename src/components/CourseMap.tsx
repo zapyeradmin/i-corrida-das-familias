@@ -9,7 +9,7 @@ const CourseMap = () => {
           Percurso <span className="gradient-text">Desafiador</span> (5Km)
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-          Explore um trajeto de 5km que combina desafio e beleza, passando por pontos icônicos da nossa cidade.
+          Um trajeto de 5km com pontos de hidratação e apoio estratégicos para garantir sua segurança e bem-estar durante toda a corrida.
         </p>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -31,7 +31,7 @@ const CourseMap = () => {
               Explore a Cidade Correndo
             </h3>
             <p className="mb-6 text-lg leading-relaxed">
-              O percurso de 5km foi desenhado para ser acessível a todos os níveis de corredores, desde iniciantes até os mais experientes, proporcionando uma experiência memorável.
+              O percurso de 5km foi desenhado para ser acessível a todos os níveis de corredores, desde iniciantes até os mais experientes, proporcionando uma experiência inesquecível.
             </p>
             
             <div className="space-y-4">
