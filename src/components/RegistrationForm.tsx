@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from 'sonner';
+import { createPaymentRequest, redirectToPayment } from "@/integrations/infinitepay/client";
 
 const RegistrationForm = () => {
   const { toast: legacyToast } = useToast();
@@ -35,7 +37,9 @@ const RegistrationForm = () => {
       case 'DINHEIRO':
         return 'O pagamento em dinheiro deverá ser efetuado no dia da retirada do kit do atleta.';
       case 'CARTAO_CREDITO':
-        return 'Opção de Cartão de Crédito indisponível no momento. Por favor, selecione outra forma de pagamento.';
+        return 'Você será redirecionado para a página de pagamento da InfinitePay após a inscrição.';
+      case 'INFINITEPAY':
+        return 'Você será redirecionado para a página de pagamento da InfinitePay após a inscrição.';
       default:
         return '';
     }
@@ -102,10 +106,40 @@ const RegistrationForm = () => {
       // Insert data into Supabase
       const { data, error } = await supabase
         .from('athletes')
-        .insert([athleteData]);
+        .insert([athleteData])
+        .select();
       
       if (error) throw error;
       
+      // Handle InfinitePay redirect if selected as payment method
+      if (formData.paymentMethod === 'INFINITEPAY') {
+        try {
+          // Create payment request and get payment URL
+          const paymentUrl = await createPaymentRequest({
+            fullName: formData.fullName,
+            cpf: formData.cpf,
+            email: formData.email,
+            phone: formData.phone,
+            amount: 47.0, // Registration fee in BRL
+            description: "Inscrição Corrida das Famílias - 5Km",
+            reference: data[0].id // Using athlete's ID as reference
+          });
+          
+          toast.success("Inscrição realizada com sucesso! Redirecionando para pagamento...");
+          
+          // Redirect user to InfinitePay payment page
+          setTimeout(() => {
+            redirectToPayment(paymentUrl);
+          }, 1500);
+          
+          return; // Exit early as we're redirecting the user
+        } catch (paymentError: any) {
+          console.error('Payment creation error:', paymentError);
+          toast.error(`Erro ao criar pagamento: ${paymentError.message}. Sua inscrição foi registrada, mas será necessário completar o pagamento posteriormente.`);
+        }
+      }
+      
+      // Default success message for other payment methods
       toast.success("Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.");
       
       // Reset form
@@ -296,7 +330,7 @@ const RegistrationForm = () => {
               <option value="DINHEIRO">Dinheiro (Pagamento no local/dia da entrega do kit)</option>
               <option value="PIX">PIX (Instruções após inscrição)</option>
               <option value="TRANSFERENCIA">Transferência Bancária (Instruções após inscrição)</option>
-              <option value="CARTAO_CREDITO">Cartão de Crédito (Indisponível no momento)</option>
+              <option value="INFINITEPAY">Cartão de Crédito / PIX (Pagamento online)</option>
             </select>
             {formData.paymentMethod && (
               <p className="text-xs text-gray-500 mt-1.5">
