@@ -49,7 +49,7 @@ const Timeline = () => {
             <div className="relative timeline-item">
               <div className="custom-card p-6 ml-4 border-l-4 border-event-orange">
                 <div className="flex items-center justify-between mb-2 flex-wrap">
-                  <h3 className="font-bold text-xl text-event-orange">Dia da Corrida XPTO!</h3>
+                  <h3 className="font-bold text-xl text-event-orange">Dia da Corrida das Famílias!</h3>
                   <time className="font-medium text-sm text-event-orange bg-orange-100 px-2 py-1 rounded mt-2 sm:mt-0">
                     15/05/2025
                   </time>
