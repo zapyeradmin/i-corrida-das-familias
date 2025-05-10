@@ -40,7 +40,7 @@ const Timeline = () => {
                   </time>
                 </div>
                 <p className="text-gray-600">
-                  Retire seu kit atleta (camiseta Oficial, número) das 19:30:00 às 22:00. No Centro Pastoral da Igreja de N. Sra. da Conceição.
+                  Retire seu kit atleta (camiseta Oficial, número) das 19:30:00 às 22:00. No Centro Pastoral da Igreja de N. Sra. da Conceição. Não esqueça de levar sua doação de 1Kg de Alimento não perecível, e para os inscritos que forem retirar seu Kit do Atleta no dia 15 de junho, deve receber até às 5:30, no local da largada.
                 </p>
               </div>
             </div>
