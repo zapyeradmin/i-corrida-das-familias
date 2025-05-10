@@ -1,5 +1,8 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavbarExtensions } from './NavbarUpdates';
+import logoAzul from '/lovable-uploads/d7887a43-bd04-4b1b-94e9-df52c5caa08c.png';
+import logoBranca from '/lovable-uploads/0ced6a80-33a2-4da0-bbdd-ec8fd2d48ffa.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +27,13 @@ const Navbar = () => {
   return (
     <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrolled ? 'header-scrolled' : 'bg-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
-        <a href="#hero" className="text-2xl font-bold brand-logo text-white">Corrida<span className="text-blue-400">XPTO</span></a>
+        <a href="#hero" className="brand-logo">
+          <img 
+            src={scrolled ? logoAzul : logoBranca} 
+            alt="Corrida das Famílias" 
+            className="h-10 md:h-12 w-auto transition-all duration-300"
+          />
+        </a>
         
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-6">
