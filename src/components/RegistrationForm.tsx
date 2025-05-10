@@ -30,10 +30,8 @@ const RegistrationForm = () => {
     switch(method) {
       case 'PIX':
         return 'Chave PIX: evento@corrida.com.br (CNPJ). Envie o comprovante para comprovantes@corrida.com.br com seu nome e CPF.';
-      case 'TRANSFERENCIA':
-        return 'Banco XPTO S.A | Ag: 0001 | C/C: 12345-6 | CNPJ: 00.000.000/0001-00. Envie o comprovante.';
-      case 'DINHEIRO':
-        return 'O pagamento em dinheiro deverá ser efetuado no dia da retirada do kit do atleta.';
+      case 'CARTAO_CREDITO':
+        return 'Você será redirecionado para a página de pagamento após confirmar sua inscrição.';
       default:
         return '';
     }
@@ -293,9 +291,8 @@ const RegistrationForm = () => {
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-event-orange focus:border-transparent transition-shadow bg-white"
             >
               <option value="">Selecione...</option>
-              <option value="DINHEIRO">Dinheiro (Pagamento no local/dia da entrega do kit)</option>
-              <option value="PIX">PIX (Instruções após inscrição)</option>
-              <option value="TRANSFERENCIA">Transferência Bancária (Instruções após inscrição)</option>
+              <option value="PIX">PIX</option>
+              <option value="CARTAO_CREDITO">Cartão de Crédito</option>
             </select>
             {formData.paymentMethod && (
               <p className="text-xs text-gray-500 mt-1.5">

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
@@ -65,8 +64,6 @@ export const useAthletesData = () => {
   const mapPaymentMethod = (method: string) => {
     const methodMap: Record<string, string> = {
       'PIX': 'PIX',
-      'DINHEIRO': 'Dinheiro',
-      'TRANSFERENCIA': 'Transferência Bancária',
       'CARTAO_CREDITO': 'Cartão de Crédito'
     };
     return methodMap[method] || method;
