@@ -15,11 +15,11 @@ export const NavbarExtensions: React.FC = () => {
   return (
     <>
       {user ? (
-        <div className="ml-6">
+        <div className="ml-6 flex items-center space-x-2">
           {/* Show Dashboard link to all authenticated users */}
           <Link 
             to="/dashboard" 
-            className="text-sm px-4 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-800 transition-colors"
+            className="text-sm px-4 py-2 rounded-md bg-gradient-to-r from-event-blue to-event-blue-light text-white hover:shadow-md transition-all duration-300"
           >
             Dashboard
           </Link>
@@ -28,7 +28,7 @@ export const NavbarExtensions: React.FC = () => {
               await supabase.auth.signOut();
               navigate('/auth');
             }}
-            className="text-sm px-4 py-2 ml-2 rounded-md bg-gray-700 text-white hover:bg-gray-800 transition-colors"
+            className="text-sm px-4 py-2 rounded-md bg-gray-700 text-white hover:bg-gray-800 hover:shadow-md transition-all duration-300"
           >
             Sair
           </button>
@@ -37,7 +37,7 @@ export const NavbarExtensions: React.FC = () => {
         <div className="ml-6">
           <Link 
             to="/auth" 
-            className="text-sm px-4 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-800 transition-colors"
+            className="text-sm px-4 py-2 rounded-md bg-gradient-to-r from-event-blue to-event-blue-light text-white hover:shadow-md transition-all duration-300"
           >
             Login
           </Link>
