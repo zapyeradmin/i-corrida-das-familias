@@ -58,10 +58,13 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-gray-50 text-gray-700 antialiased;
     font-family: 'Roboto', sans-serif;
-    scroll-behavior: smooth;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -69,6 +72,37 @@
   }
 }
 
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Hero section styling */
 .hero-overlay::before {
   content: "";
   position: absolute;
@@ -92,6 +126,7 @@
   background-clip: text;
 }
 
+/* Button styling */
 .cta-button {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
@@ -102,11 +137,12 @@
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
+/* Card styling */
 .custom-card {
   background-color: white;
   border-radius: 0.75rem;
   box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 20px 20px -5px rgba(0,0,0,0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   border-top: 4px solid transparent;
   border-image: linear-gradient(to right, #2563EB, #60A5FA);
   border-image-slice: 1;
@@ -166,12 +202,18 @@
   color: #1E40AF;
 }
 
-/* Nova seção para cards de feature com efeito de gradiente */
+/* Feature cards with hover effects */
 .feature-card {
   border-radius: 1rem;
   overflow: hidden;
   position: relative;
   isolation: isolate;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -5px rgba(59, 130, 246, 0.2);
 }
 
 .feature-card::before {
@@ -188,16 +230,35 @@
   opacity: 1;
 }
 
-/* Seção de inscrição com gradiente azul mais vibrante */
+/* Registration section */
 .registration-section {
   background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #60A5FA 100%);
 }
 
-/* Botão de inscrição com gradiente azul */
+/* Register button */
 .register-button {
   background: linear-gradient(to right, #2563EB, #3B82F6);
+  transition: all 0.3s ease;
 }
 
 .register-button:hover {
   background: linear-gradient(to right, #1D4ED8, #2563EB);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-item::before {
+    left: -25px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .timeline-line {
+    left: -17px;
+  }
+  
+  .custom-card {
+    max-width: 100%;
+  }
 }
