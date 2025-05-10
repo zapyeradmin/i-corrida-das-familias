@@ -9,7 +9,7 @@ const About = () => {
           Sobre o <span className="gradient-text">Evento</span>
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-          Descubra o que torna a Corrida Urbana XPTO uma experiência única e imperdível para todos os amantes de corrida.
+          O primeiro grande evento de corrida de rua para famílias em Serra Talhada, idealizado pelo ECC da Paróquia do Rosário, unindo fé, esporte e solidariedade.
         </p>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -23,11 +23,10 @@ const About = () => {
           
           <div className="text-gray-700">
             <h3 className="text-3xl font-semibold text-gray-800 mb-6 font-poppins">
-              Uma Celebração do Esporte e da Cidade
+              Uma Experiência Única de Alegria, Fé e Saúde
             </h3>
             <p className="mb-6 text-lg leading-relaxed">
-              A Corrida Urbana XPTO é mais que uma competição, é um convite para explorar a cidade de uma nova perspectiva, 
-              promover a saúde e o bem-estar, e conectar pessoas apaixonadas pelo esporte.
+              A Corrida das Famílias é mais que uma competição, é um convite para unir a família em um momento especial de esporte, Fé, saúde e diversão. Um evento que promove a integração social e o bem-estar de todos.
             </p>
             
             <ul className="space-y-5">
