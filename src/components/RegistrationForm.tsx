@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from 'sonner';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const { toast: legacyToast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     cpf: '',
@@ -104,12 +105,8 @@ const RegistrationForm = () => {
       
       if (error) throw error;
       
-      // Success message with PIX payment instructions if PIX was selected
-      if (formData.paymentMethod === 'PIX') {
-        toast.success("Inscrição realizada com sucesso! Acesse a página de pagamento PIX para concluir seu processo.");
-      } else {
-        toast.success("Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.");
-      }
+      // Success message
+      toast.success("Inscrição realizada com sucesso! Redirecionando para a página de pagamento...");
       
       // Reset form
       setFormData({
@@ -122,6 +119,14 @@ const RegistrationForm = () => {
         shirtSize: '',
         paymentMethod: ''
       });
+      
+      // Redirecionar com base no método de pagamento
+      if (athleteData.payment_method === 'PIX') {
+        navigate('/pix-payment');
+      } else if (athleteData.payment_method === 'CARTAO_CREDITO') {
+        navigate('/card-payment');
+      }
+      
     } catch (error: any) {
       console.error('Error inserting athlete data:', error);
       
