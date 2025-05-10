@@ -1,96 +1,71 @@
-
 import React, { useState, useEffect } from 'react';
+import { NavbarExtensions } from './NavbarUpdates';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setIsScrolled(true);
+        setScrolled(true);
       } else {
-        setIsScrolled(false);
+        setScrolled(false);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial state based on scroll position
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
-    <header 
-      className={`fixed w-full z-50 transition-all duration-300 ease-in-out py-2 ${
-        isScrolled || isMobileMenuOpen ? 'header-scrolled' : ''
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex justify-between items-center">
-          <a href="#" className={`text-3xl font-bold font-poppins ${
-            isScrolled || isMobileMenuOpen ? 'text-event-blue' : 'text-white'
-          }`}>
-            CORRIDA<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-event-blue-light">XPTO</span>
-          </a>
+    <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrolled ? 'header-scrolled' : 'bg-transparent'}`}>
+      <div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6">
+        <a href="#hero" className="text-2xl font-bold brand-logo text-white">Corrida<span className="text-blue-400">XPTO</span></a>
+        
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex items-center space-x-6">
+          <a href="#about" className="nav-link text-white hover:text-blue-300 transition-colors">Sobre</a>
+          <a href="#timeline" className="nav-link text-white hover:text-blue-300 transition-colors">Cronograma</a>
+          <a href="#course" className="nav-link text-white hover:text-blue-300 transition-colors">Percurso</a>
+          <a href="#sponsors" className="nav-link text-white hover:text-blue-300 transition-colors">Patrocinadores</a>
+          <a href="#registration" className="nav-link text-white hover:text-blue-300 transition-colors">Inscrição</a>
           
-          <div className="hidden md:flex space-x-6 items-center">
-            <a href="#about" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
-            }`}>Sobre</a>
-            <a href="#timeline" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
-            }`}>Cronograma</a>
-            <a href="#course" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
-            }`}>Percurso</a>
-            <a href="#sponsors" className={`nav-link font-medium transition-colors ${
-              isScrolled ? 'text-event-blue-dark hover:text-event-blue' : 'text-gray-200 hover:text-white'
-            }`}>Patrocinadores</a>
-            <a 
-              href="#registration" 
-              className="bg-gradient-to-r from-event-blue-dark to-event-blue hover:from-event-royal hover:to-event-blue-dark text-white font-semibold py-2 px-5 rounded-lg cta-button text-sm"
-            >
-              Inscreva-se
-            </a>
-          </div>
-
-          <div className="md:hidden">
-            <button 
-              onClick={toggleMobileMenu}
-              className={`mobile-menu-button focus:outline-none ${
-                isScrolled ? 'text-event-blue-dark' : 'text-gray-200 hover:text-white'
-              }`}
-              aria-label="Menu"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+          {/* Add NavbarExtensions here */}
+          <NavbarExtensions />
         </nav>
+        
+        {/* Mobile Menu Button */}
+        <button 
+          className="md:hidden text-white mobile-menu-button"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
       
       {/* Mobile Menu */}
-      <div className={`md:hidden bg-white shadow-lg absolute w-full transition-all duration-300 ease-in-out ${
-        isMobileMenuOpen ? 'block' : 'hidden'
-      }`}>
-        <a href="#about" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Sobre</a>
-        <a href="#timeline" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Cronograma</a>
-        <a href="#course" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Percurso</a>
-        <a href="#sponsors" onClick={closeMobileMenu} className="block py-3 px-6 text-event-blue-dark hover:bg-blue-50">Patrocinadores</a>
-        <a href="#registration" onClick={closeMobileMenu} className="block py-3 px-6 bg-gradient-to-r from-event-blue-dark to-event-blue text-white text-center font-semibold hover:from-event-royal hover:to-event-blue-dark">Inscreva-se</a>
-      </div>
+      {isMenuOpen && (
+        <div className="md:hidden bg-gray-900 bg-opacity-95 backdrop-blur-sm">
+          <div className="container mx-auto px-4 py-3 space-y-2">
+            <a href="#about" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Sobre</a>
+            <a href="#timeline" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Cronograma</a>
+            <a href="#course" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Percurso</a>
+            <a href="#sponsors" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Patrocinadores</a>
+            <a href="#registration" className="block py-2 text-white hover:text-blue-300 transition-colors" onClick={() => setIsMenuOpen(false)}>Inscrição</a>
+            
+            {/* Add Dashboard or Login link based on auth state */}
+            <div className="py-2">
+              <NavbarExtensions />
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

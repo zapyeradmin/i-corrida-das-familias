@@ -1,9 +1,10 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from 'sonner';
 
 const RegistrationForm = () => {
-  const { toast } = useToast();
+  const { toast: legacyToast } = useToast();
   const [formData, setFormData] = useState({
     fullName: '',
     cpf: '',
@@ -45,33 +46,21 @@ const RegistrationForm = () => {
     if (!formData.fullName || !formData.cpf || !formData.birthDate || 
         !formData.email || !formData.phone || !formData.gender || 
         !formData.shirtSize || !formData.paymentMethod) {
-      toast({
-        title: "Erro de validação",
-        description: "Por favor, preencha todos os campos obrigatórios.",
-        variant: "destructive"
-      });
+      toast.error("Por favor, preencha todos os campos obrigatórios.");
       return false;
     }
     
     // CPF validation (simple format check)
     const cpfPattern = /^(\d{3}\.?\d{3}\.?\d{3}-?\d{2})$/;
     if (!cpfPattern.test(formData.cpf)) {
-      toast({
-        title: "CPF inválido",
-        description: "Por favor, use o formato XXX.XXX.XXX-XX.",
-        variant: "destructive"
-      });
+      toast.error("CPF inválido. Por favor, use o formato XXX.XXX.XXX-XX.");
       return false;
     }
     
     // Email validation
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(formData.email)) {
-      toast({
-        title: "Email inválido",
-        description: "Por favor, insira um endereço de email válido.",
-        variant: "destructive"
-      });
+      toast.error("Email inválido. Por favor, insira um endereço de email válido.");
       return false;
     }
     
@@ -81,30 +70,43 @@ const RegistrationForm = () => {
     today.setHours(0, 0, 0, 0);
     
     if (birthDate >= today) {
-      toast({
-        title: "Data de nascimento inválida",
-        description: "A data de nascimento deve ser no passado.",
-        variant: "destructive"
-      });
+      toast.error("Data de nascimento inválida. A data de nascimento deve ser no passado.");
       return false;
     }
     
     return true;
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm()) return;
     
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      toast({
-        title: "Inscrição realizada com sucesso!",
-        description: "Você receberá um e-mail de confirmação em breve.",
-      });
+    try {
+      // Format data for Supabase
+      const athleteData = {
+        full_name: formData.fullName,
+        cpf: formData.cpf,
+        birth_date: formData.birthDate,
+        email: formData.email,
+        phone: formData.phone,
+        gender: formData.gender,
+        course: '5Km',
+        shirt_size: formData.shirtSize,
+        payment_method: formData.paymentMethod,
+        payment_status: 'PENDING'
+      };
+      
+      // Insert data into Supabase
+      const { data, error } = await supabase
+        .from('athletes')
+        .insert([athleteData]);
+      
+      if (error) throw error;
+      
+      toast.success("Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.");
       
       // Reset form
       setFormData({
@@ -117,9 +119,18 @@ const RegistrationForm = () => {
         shirtSize: '',
         paymentMethod: ''
       });
+    } catch (error: any) {
+      console.error('Error inserting athlete data:', error);
       
+      // Handle unique constraint violation (duplicate CPF)
+      if (error.code === '23505') {
+        toast.error("CPF já cadastrado. Uma inscrição com este CPF já existe.");
+      } else {
+        toast.error(`Erro ao processar inscrição: ${error.message}`);
+      }
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   
   return (
