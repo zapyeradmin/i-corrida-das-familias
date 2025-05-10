@@ -81,41 +81,113 @@ export const useAthletesData = () => {
     return statusMap[status] || status;
   };
 
-  useEffect(() => {
-    const fetchAthletes = async () => {
-      try {
-        setLoading(true);
-        
-        // Ensure we're authenticated before fetching athletes
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-        
-        if (sessionError) {
-          throw sessionError;
-        }
-        
-        if (!session) {
-          throw new Error('Usuário não autenticado');
-        }
-        
-        const { data, error } = await supabase
-          .from('athletes')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) {
-          console.error('Error fetching athletes:', error.message);
-          throw error;
-        }
-        
-        setAthletes(data || []);
-      } catch (error: any) {
-        console.error('Erro ao carregar atletas:', error);
-        toast.error(`Erro ao carregar atletas: ${error.message}`);
-      } finally {
-        setLoading(false);
+  const fetchAthletes = async () => {
+    try {
+      setLoading(true);
+      
+      // Ensure we're authenticated before fetching athletes
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      
+      if (sessionError) {
+        throw sessionError;
       }
-    };
+      
+      if (!session) {
+        throw new Error('Usuário não autenticado');
+      }
+      
+      const { data, error } = await supabase
+        .from('athletes')
+        .select('*')
+        .order('created_at', { ascending: false });
 
+      if (error) {
+        console.error('Error fetching athletes:', error.message);
+        throw error;
+      }
+      
+      setAthletes(data || []);
+    } catch (error: any) {
+      console.error('Erro ao carregar atletas:', error);
+      toast.error(`Erro ao carregar atletas: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Update athlete information
+  const updateAthlete = async (updatedAthlete: Athlete) => {
+    try {
+      const { error } = await supabase
+        .from('athletes')
+        .update({
+          full_name: updatedAthlete.full_name,
+          cpf: updatedAthlete.cpf,
+          birth_date: updatedAthlete.birth_date,
+          email: updatedAthlete.email,
+          phone: updatedAthlete.phone,
+          gender: updatedAthlete.gender,
+          course: updatedAthlete.course,
+          shirt_size: updatedAthlete.shirt_size,
+          payment_method: updatedAthlete.payment_method,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', updatedAthlete.id);
+
+      if (error) throw error;
+
+      // Refresh athlete data
+      fetchAthletes();
+      return Promise.resolve();
+    } catch (error: any) {
+      console.error('Error updating athlete:', error);
+      toast.error(`Erro ao atualizar inscrição: ${error.message}`);
+      return Promise.reject(error);
+    }
+  };
+
+  // Confirm payment status
+  const confirmPayment = async (athleteId: string) => {
+    try {
+      const { error } = await supabase
+        .from('athletes')
+        .update({ 
+          payment_status: 'CONFIRMED',
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', athleteId);
+
+      if (error) throw error;
+
+      toast.success('Pagamento confirmado com sucesso!');
+      // Refresh athlete data
+      fetchAthletes();
+    } catch (error: any) {
+      console.error('Error confirming payment:', error);
+      toast.error(`Erro ao confirmar pagamento: ${error.message}`);
+    }
+  };
+
+  // Delete athlete
+  const deleteAthlete = async (athleteId: string) => {
+    try {
+      const { error } = await supabase
+        .from('athletes')
+        .delete()
+        .eq('id', athleteId);
+
+      if (error) throw error;
+
+      toast.success('Inscrição excluída com sucesso!');
+      // Refresh athlete data
+      fetchAthletes();
+    } catch (error: any) {
+      console.error('Error deleting athlete:', error);
+      toast.error(`Erro ao excluir inscrição: ${error.message}`);
+    }
+  };
+
+  useEffect(() => {
     fetchAthletes();
   }, []);
 
@@ -157,6 +229,10 @@ export const useAthletesData = () => {
     mapGender,
     mapShirtSize,
     mapPaymentMethod,
-    mapPaymentStatus
+    mapPaymentStatus,
+    updateAthlete,
+    confirmPayment,
+    deleteAthlete,
+    fetchAthletes
   };
 };

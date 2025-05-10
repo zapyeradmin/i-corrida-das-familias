@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import LoadingSpinner from './LoadingSpinner';
 import EmptyStateView from './EmptyStateView';
 import AthletesTable from './AthletesTable';
 import AthletesFilter from './AthletesFilter';
+import AthleteEditDialog from './AthleteEditDialog';
+import DeleteConfirmDialog from './DeleteConfirmDialog';
 import { Athlete } from '@/hooks/useAthletesData';
 
 interface AthletesContentProps {
@@ -20,6 +22,9 @@ interface AthletesContentProps {
   mapShirtSize: (size: string) => string;
   mapPaymentMethod: (method: string) => string;
   mapPaymentStatus: (status: string) => string;
+  updateAthlete: (athlete: Athlete) => Promise<void>;
+  confirmPayment: (athleteId: string) => Promise<void>;
+  deleteAthlete: (athleteId: string) => Promise<void>;
 }
 
 const AthletesContent: React.FC<AthletesContentProps> = ({
@@ -34,12 +39,48 @@ const AthletesContent: React.FC<AthletesContentProps> = ({
   mapGender,
   mapShirtSize,
   mapPaymentMethod,
-  mapPaymentStatus
+  mapPaymentStatus,
+  updateAthlete,
+  confirmPayment,
+  deleteAthlete
 }) => {
+  // State for edit dialog
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [selectedAthlete, setSelectedAthlete] = useState<Athlete | null>(null);
+  
+  // State for delete confirmation dialog
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [athleteToDelete, setAthleteToDelete] = useState<{ id: string, name: string } | null>(null);
+
   // Handler to clear filters
   const clearFilters = () => {
     setSearchTerm('');
     setPaymentFilter('all');
+  };
+
+  // Handler for editing athlete
+  const handleEditAthlete = (athlete: Athlete) => {
+    setSelectedAthlete(athlete);
+    setEditDialogOpen(true);
+  };
+
+  // Handler for confirming payment
+  const handleConfirmPayment = (athleteId: string) => {
+    confirmPayment(athleteId);
+  };
+
+  // Handler for deleting athlete
+  const handleDeleteClick = (athleteId: string, athleteName: string) => {
+    setAthleteToDelete({ id: athleteId, name: athleteName });
+    setDeleteDialogOpen(true);
+  };
+
+  // Handler for confirming deletion
+  const handleDeleteConfirm = () => {
+    if (athleteToDelete) {
+      deleteAthlete(athleteToDelete.id);
+      setDeleteDialogOpen(false);
+    }
   };
 
   // Check if we're currently filtering
@@ -76,9 +117,35 @@ const AthletesContent: React.FC<AthletesContentProps> = ({
             mapShirtSize={mapShirtSize}
             mapPaymentMethod={mapPaymentMethod}
             mapPaymentStatus={mapPaymentStatus}
+            onEditAthlete={handleEditAthlete}
+            onConfirmPayment={handleConfirmPayment}
+            onDeleteAthlete={(athleteId) => {
+              const athlete = filteredAthletes.find(a => a.id === athleteId);
+              if (athlete) {
+                handleDeleteClick(athleteId, athlete.full_name);
+              }
+            }}
           />
         )}
       </CardContent>
+
+      {/* Edit Dialog */}
+      <AthleteEditDialog
+        open={editDialogOpen}
+        onOpenChange={setEditDialogOpen}
+        athlete={selectedAthlete}
+        onSave={updateAthlete}
+      />
+
+      {/* Delete Confirmation Dialog */}
+      {athleteToDelete && (
+        <DeleteConfirmDialog
+          open={deleteDialogOpen}
+          onOpenChange={setDeleteDialogOpen}
+          onConfirm={handleDeleteConfirm}
+          athleteName={athleteToDelete.name}
+        />
+      )}
     </Card>
   );
 };

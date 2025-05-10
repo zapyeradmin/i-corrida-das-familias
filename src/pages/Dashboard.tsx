@@ -27,7 +27,10 @@ const Dashboard = () => {
     mapGender,
     mapShirtSize,
     mapPaymentMethod,
-    mapPaymentStatus
+    mapPaymentStatus,
+    updateAthlete,
+    confirmPayment,
+    deleteAthlete
   } = useAthletesData();
   
   return (
@@ -61,6 +64,9 @@ const Dashboard = () => {
           mapShirtSize={mapShirtSize}
           mapPaymentMethod={mapPaymentMethod}
           mapPaymentStatus={mapPaymentStatus}
+          updateAthlete={updateAthlete}
+          confirmPayment={confirmPayment}
+          deleteAthlete={deleteAthlete}
         />
       </main>
       

@@ -8,21 +8,9 @@ import {
   TableHeader,
   TableRow 
 } from '@/components/ui/table';
-
-interface Athlete {
-  id: string;
-  full_name: string;
-  cpf: string;
-  birth_date: string;
-  email: string;
-  phone: string;
-  gender: string;
-  course: string;
-  shirt_size: string;
-  payment_method: string;
-  payment_status: string;
-  created_at: string;
-}
+import { Button } from '@/components/ui/button';
+import { Pencil, Check, Trash } from 'lucide-react';
+import { Athlete } from '@/hooks/useAthletesData';
 
 interface AthletesTableProps {
   athletes: Athlete[];
@@ -31,6 +19,9 @@ interface AthletesTableProps {
   mapShirtSize: (size: string) => string;
   mapPaymentMethod: (method: string) => string;
   mapPaymentStatus: (status: string) => string;
+  onEditAthlete: (athlete: Athlete) => void;
+  onConfirmPayment: (athleteId: string) => void;
+  onDeleteAthlete: (athleteId: string) => void;
 }
 
 const AthletesTable: React.FC<AthletesTableProps> = ({
@@ -39,7 +30,10 @@ const AthletesTable: React.FC<AthletesTableProps> = ({
   mapGender,
   mapShirtSize,
   mapPaymentMethod,
-  mapPaymentStatus
+  mapPaymentStatus,
+  onEditAthlete,
+  onConfirmPayment,
+  onDeleteAthlete
 }) => {
   return (
     <div className="overflow-x-auto rounded-md border">
@@ -57,6 +51,7 @@ const AthletesTable: React.FC<AthletesTableProps> = ({
             <TableHead className="font-semibold text-gray-600">Pagamento</TableHead>
             <TableHead className="font-semibold text-gray-600">Status</TableHead>
             <TableHead className="font-semibold text-gray-600">Data de Inscrição</TableHead>
+            <TableHead className="font-semibold text-gray-600">Ações</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -83,6 +78,38 @@ const AthletesTable: React.FC<AthletesTableProps> = ({
                 </span>
               </TableCell>
               <TableCell>{new Date(athlete.created_at).toLocaleDateString('pt-BR')}</TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2">
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => onEditAthlete(athlete)}
+                    title="Editar inscrição"
+                  >
+                    <Pencil className="h-4 w-4 text-gray-600" />
+                  </Button>
+                  
+                  {athlete.payment_status !== 'CONFIRMED' && (
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      onClick={() => onConfirmPayment(athlete.id)}
+                      title="Confirmar pagamento"
+                    >
+                      <Check className="h-4 w-4 text-green-600" />
+                    </Button>
+                  )}
+                  
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => onDeleteAthlete(athlete.id)}
+                    title="Excluir inscrição"
+                  >
+                    <Trash className="h-4 w-4 text-red-600" />
+                  </Button>
+                </div>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
