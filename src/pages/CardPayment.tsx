@@ -47,11 +47,11 @@ const CardPayment = () => {
                 <p className="text-xs md:text-sm mt-1 opacity-90">Realize o pagamento clicando no botão abaixo</p>
               </div>
               
-              {/* Credit Card Image */}
+              {/* Credit Card Image - UPDATED IMAGE */}
               <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100 transition-all hover:shadow-lg w-full flex justify-center">
                 <img 
-                  src="/lovable-uploads/d503ab6c-5760-437a-bf07-6a33e96b3b2b.png" 
-                  alt="Cartão de Crédito" 
+                  src="/lovable-uploads/5d9336c3-1fd7-432b-880f-fa60531c407b.png" 
+                  alt="Corrida das Famílias" 
                   className="max-w-full h-auto md:max-w-md"
                 />
               </div>
