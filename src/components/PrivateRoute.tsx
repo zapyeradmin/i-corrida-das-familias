@@ -14,11 +14,6 @@ export const PrivateRoute = () => {
     );
   }
   
-  // Check if the user is authenticated and if the email is one of the admin emails
-  const isAdmin = user && (
-    user.email === 'admin@corrida.com' || 
-    user.email === 'admin@corridarosario.com.br'
-  );
-  
-  return isAdmin ? <Outlet /> : <Navigate to="/auth" />;
+  // Check if the user is authenticated - allow ANY authenticated user to access protected routes
+  return user ? <Outlet /> : <Navigate to="/auth" />;
 };

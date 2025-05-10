@@ -96,9 +96,14 @@ const Dashboard = () => {
       try {
         setLoading(true);
         
-        // Modificação importante aqui: garantir que estamos autenticados antes de buscar atletas
-        const session = await supabase.auth.getSession();
-        if (!session.data.session) {
+        // Ensure we're authenticated before fetching athletes
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        
+        if (sessionError) {
+          throw sessionError;
+        }
+        
+        if (!session) {
           throw new Error('Usuário não autenticado');
         }
         
@@ -107,7 +112,11 @@ const Dashboard = () => {
           .select('*')
           .order('created_at', { ascending: false });
 
-        if (error) throw error;
+        if (error) {
+          console.error('Error fetching athletes:', error.message);
+          throw error;
+        }
+        
         setAthletes(data || []);
       } catch (error: any) {
         console.error('Erro ao carregar atletas:', error);
