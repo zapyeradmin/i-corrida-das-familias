@@ -4,7 +4,7 @@ import { useAuth } from '@/hooks/useAuth';
 
 export const PrivateRoute = () => {
   const { user, loading } = useAuth();
-
+  
   // Show loading spinner while checking authentication
   if (loading) {
     return (
@@ -13,6 +13,12 @@ export const PrivateRoute = () => {
       </div>
     );
   }
-
-  return user ? <Outlet /> : <Navigate to="/auth" />;
+  
+  // Check if the user is authenticated and if the email is one of the admin emails
+  const isAdmin = user && (
+    user.email === 'admin@corrida.com' || 
+    user.email === 'admin@corridarosario.com.br'
+  );
+  
+  return isAdmin ? <Outlet /> : <Navigate to="/auth" />;
 };

@@ -11,17 +11,34 @@ import { useAuth } from '@/hooks/useAuth';
 export const NavbarExtensions: React.FC = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  
+  // Check if the user has admin email
+  const isAdmin = user && (
+    user.email === 'admin@corrida.com' || 
+    user.email === 'admin@corridarosario.com.br'
+  );
 
   return (
     <>
       {user ? (
         <div className="ml-6">
-          <Link 
-            to="/dashboard" 
-            className="text-sm px-4 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-800 transition-colors"
+          {isAdmin && (
+            <Link 
+              to="/dashboard" 
+              className="text-sm px-4 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-800 transition-colors"
+            >
+              Dashboard
+            </Link>
+          )}
+          <button
+            onClick={async () => {
+              await supabase.auth.signOut();
+              navigate('/auth');
+            }}
+            className="text-sm px-4 py-2 ml-2 rounded-md bg-gray-700 text-white hover:bg-gray-800 transition-colors"
           >
-            Dashboard
-          </Link>
+            Sair
+          </button>
         </div>
       ) : (
         <div className="ml-6">
