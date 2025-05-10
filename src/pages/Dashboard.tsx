@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -35,7 +34,6 @@ const Dashboard = () => {
   const { user, signOut } = useAuth();
   const [athletes, setAthletes] = useState<Athlete[]>([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
   
   // Format currency for Brazilian Real
   const formatCurrency = (value: number) => {
@@ -97,6 +95,13 @@ const Dashboard = () => {
     const fetchAthletes = async () => {
       try {
         setLoading(true);
+        
+        // Modificação importante aqui: garantir que estamos autenticados antes de buscar atletas
+        const session = await supabase.auth.getSession();
+        if (!session.data.session) {
+          throw new Error('Usuário não autenticado');
+        }
+        
         const { data, error } = await supabase
           .from('athletes')
           .select('*')
@@ -105,6 +110,7 @@ const Dashboard = () => {
         if (error) throw error;
         setAthletes(data || []);
       } catch (error: any) {
+        console.error('Erro ao carregar atletas:', error);
         toast.error(`Erro ao carregar atletas: ${error.message}`);
       } finally {
         setLoading(false);
