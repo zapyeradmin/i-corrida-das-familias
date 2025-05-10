@@ -58,7 +58,7 @@ const CourseMap = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Sinalização e Apoio</h4>
                   <p className="text-gray-600">
-                    Percurso totalmente sinalizado, com staff dedicado e pontos de hidratação (Km 1.5, Km 3, Km 4.5).
+                    Percurso totalmente sinalizado, com staff dedicado e pontos de hidratação 1Km.
                   </p>
                 </div>
               </div>
@@ -72,7 +72,7 @@ const CourseMap = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Altimetria</h4>
                   <p className="text-gray-600">
-                    Predominantemente plano, ideal para buscar seu recorde pessoal ou curtir a corrida sem grandes dificuldades.
+                    Percurso 100% asfaltado, com poucas elevações ideal para uma corrida sem grandes dificuldades.
                   </p>
                 </div>
               </div>
