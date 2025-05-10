@@ -19,7 +19,7 @@ const Footer = () => {
               CORRIDA<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-event-blue-light">XPTO</span>
             </h3>
             <p className="text-sm">
-              O maior evento de corrida de rua da cidade, unindo esporte, saúde e diversão para toda a família.
+              Este evento marca o início de uma nova tradição em Serra Talhada, reunindo famílias em uma celebração de Fé, saúde, esporte e união.
             </p>
           </div>
           
