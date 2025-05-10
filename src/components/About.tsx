@@ -39,8 +39,8 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Data e Horários</h4>
                   <p className="text-gray-600">
-                    <strong>Data:</strong> 25 de Outubro de 2025<br />
-                    <strong>Concentração:</strong> 06:00 | <strong>Largada 5Km:</strong> 07:00
+                    <strong>Data:</strong> 15 de junho de 2025<br />
+                    <strong>Concentração:</strong> 05:00 | <strong>Largada 5Km:</strong> 06:00
                   </p>
                 </div>
               </li>
@@ -55,7 +55,7 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Localização Estratégica</h4>
                   <p className="text-gray-600">
-                    <strong>Local:</strong> Praça Central da Cidade - Fácil acesso e infraestrutura completa.
+                    <strong>Local:</strong> Igreja Matriz do Rosário - Serra Talhada/PE
                   </p>
                 </div>
               </li>
@@ -69,7 +69,7 @@ const About = () => {
                 <div>
                   <h4 className="font-semibold text-lg">Suporte ao Atleta</h4>
                   <p className="text-gray-600">
-                    <strong>5 Pontos de Apoio:</strong> Hidratação, frutas e suporte médico ao longo dos 5Km para garantir seu bem-estar.
+                    <strong>5 Pontos de Apoio:</strong> Hidratação, frutas e suporte de saúde ao longo dos 5Km para garantir seu bem-estar.
                   </p>
                 </div>
               </li>
