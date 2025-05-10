@@ -1,48 +1,74 @@
 
 import React from 'react';
-import { supabase } from '@/integrations/supabase/client';
-import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { Link } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
-/**
- * This component provides extensions to the Navbar component.
- * It can be used to add authentication-related links to the navbar.
- */
-export const NavbarExtensions: React.FC = () => {
+export function NavbarExtensions() {
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   return (
     <>
       {user ? (
-        <div className="ml-6 flex items-center space-x-2">
-          {/* Show Dashboard link to all authenticated users */}
-          <Link 
-            to="/dashboard" 
-            className="text-sm px-4 py-2 rounded-md bg-gradient-to-r from-event-blue to-event-blue-light text-white hover:shadow-md transition-all duration-300"
-          >
-            Dashboard
-          </Link>
-          <button
-            onClick={async () => {
-              await supabase.auth.signOut();
-              navigate('/auth');
-            }}
-            className="text-sm px-4 py-2 rounded-md bg-gray-700 text-white hover:bg-gray-800 hover:shadow-md transition-all duration-300"
-          >
-            Sair
-          </button>
-        </div>
+        <Link 
+          to="/dashboard" 
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors flex items-center"
+        >
+          Dashboard
+        </Link>
       ) : (
-        <div className="ml-6">
-          <Link 
-            to="/auth" 
-            className="text-sm px-4 py-2 rounded-md bg-gradient-to-r from-event-blue to-event-blue-light text-white hover:shadow-md transition-all duration-300"
-          >
-            Login
-          </Link>
-        </div>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-blue-600 text-white hover:bg-blue-700">Pagamentos</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[200px] gap-3 p-4">
+                  <ListItem href="/pix-payment" title="PIX">
+                    Pagamento via Chave PIX
+                  </ListItem>
+                  <ListItem href="/card-payment" title="Cartão">
+                    Pagamento com cartão de crédito
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       )}
     </>
   );
-};
+}
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
