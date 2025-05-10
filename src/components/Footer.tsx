@@ -62,7 +62,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-700 pt-8 text-center text-sm">
           <p>
-            &copy; {currentYear} Corrida Urbana XPTO. Todos os direitos reservados. 
+            &copy; {currentYear} Corrida das Famílias. por Zapyer Soluções em Tecnologia. Todos os direitos reservados. 
             Desenvolvido com 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline mx-1 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/>
