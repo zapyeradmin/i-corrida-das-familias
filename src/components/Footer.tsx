@@ -15,9 +15,13 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-semibold text-white mb-4 font-poppins">
-              CORRIDA<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-event-blue-light">XPTO</span>
-            </h3>
+            <div className="mb-4">
+              <img 
+                src="/lovable-uploads/d7887a43-bd04-4b1b-94e9-df52c5caa08c.png" 
+                alt="Corrida das Famílias Logo" 
+                className="h-12 w-auto"
+              />
+            </div>
             <p className="text-sm">
               Este evento marca o início de uma nova tradição em Serra Talhada e região, reunindo famílias em uma celebração de Fé, saúde, esporte e união.
             </p>
