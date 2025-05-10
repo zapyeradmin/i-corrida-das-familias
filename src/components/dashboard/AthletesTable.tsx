@@ -9,7 +9,7 @@ import {
   TableRow 
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { Pencil, Check, Trash } from 'lucide-react';
+import { Pencil, Check, Trash, MessageSquare } from 'lucide-react';
 import { Athlete } from '@/hooks/useAthletesData';
 
 interface AthletesTableProps {
@@ -35,6 +35,19 @@ const AthletesTable: React.FC<AthletesTableProps> = ({
   onConfirmPayment,
   onDeleteAthlete
 }) => {
+  // Função para formatar o número de telefone para uso no link do WhatsApp
+  const formatWhatsAppNumber = (phone: string) => {
+    // Remove todos os caracteres não numéricos
+    const numbersOnly = phone.replace(/\D/g, '');
+    
+    // Se o número já começar com 55 (código do Brasil), não adiciona novamente
+    if (numbersOnly.startsWith('55')) {
+      return numbersOnly;
+    }
+    
+    return `55${numbersOnly}`;
+  };
+
   return (
     <div className="overflow-x-auto rounded-md border">
       <Table>
@@ -107,6 +120,21 @@ const AthletesTable: React.FC<AthletesTableProps> = ({
                     title="Excluir inscrição"
                   >
                     <Trash className="h-4 w-4 text-red-600" />
+                  </Button>
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    asChild
+                    title="Falar no WhatsApp"
+                  >
+                    <a 
+                      href={`https://wa.me/${formatWhatsAppNumber(athlete.phone)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageSquare className="h-4 w-4 text-green-600" />
+                    </a>
                   </Button>
                 </div>
               </TableCell>
