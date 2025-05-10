@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
+import PixPayment from "./pages/PixPayment";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AuthProvider } from "./hooks/useAuth";
 
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/pix-payment" element={<PixPayment />} />
             
             {/* Protected routes */}
             <Route element={<PrivateRoute />}>

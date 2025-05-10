@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const { toast: legacyToast } = useToast();
@@ -103,8 +104,12 @@ const RegistrationForm = () => {
       
       if (error) throw error;
       
-      // Success message
-      toast.success("Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.");
+      // Success message with PIX payment instructions if PIX was selected
+      if (formData.paymentMethod === 'PIX') {
+        toast.success("Inscrição realizada com sucesso! Acesse a página de pagamento PIX para concluir seu processo.");
+      } else {
+        toast.success("Inscrição realizada com sucesso! Você receberá um e-mail de confirmação em breve.");
+      }
       
       // Reset form
       setFormData({
@@ -295,9 +300,18 @@ const RegistrationForm = () => {
               <option value="CARTAO_CREDITO">Cartão de Crédito</option>
             </select>
             {formData.paymentMethod && (
-              <p className="text-xs text-gray-500 mt-1.5">
-                {getPaymentInstructions(formData.paymentMethod)}
-              </p>
+              <div className="mt-1.5">
+                <p className="text-xs text-gray-500">
+                  {getPaymentInstructions(formData.paymentMethod)}
+                </p>
+                {formData.paymentMethod === 'PIX' && (
+                  <p className="text-xs text-blue-600 mt-1">
+                    <Link to="/pix-payment" className="underline hover:text-blue-800">
+                      Clique aqui para acessar a página de pagamento PIX
+                    </Link>
+                  </p>
+                )}
+              </div>
             )}
           </div>
 
