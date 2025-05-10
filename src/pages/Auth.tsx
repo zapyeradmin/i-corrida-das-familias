@@ -78,7 +78,11 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold gradient-text mb-2">Corrida XPTO</h1>
+          <img 
+            src="/lovable-uploads/8c9850a2-afd7-4d7b-bc61-72f5543885c8.png" 
+            alt="Corrida das Famílias" 
+            className="h-20 mx-auto mb-2"
+          />
           <p className="text-gray-600">Acesse o painel administrativo</p>
         </div>
         
