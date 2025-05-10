@@ -41,7 +41,7 @@ const Hero = () => {
           </span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight font-poppins">
-          CORRIDA <span className="text-blue-400">URBANA</span> XPTO
+          1ª CORRIDA <span className="text-blue-400">DAS FAMÍLIAS</span> 2025
         </h1>
         <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-200">
           Prepare-se para o desafio do ano! Participe da corrida que vai movimentar a cidade e testar seus limites.
