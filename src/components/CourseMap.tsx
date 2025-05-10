@@ -9,7 +9,7 @@ const CourseMap = () => {
           Percurso <span className="gradient-text">Desafiador</span> (5Km)
         </h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-          Um trajeto de 5km com pontos de hidratação e apoio estratégicos para garantir sua segurança e bem-estar durante toda a corrida.
+          Explore um trajeto de 5km que combina desafio e beleza, passando por pontos icônicos de Serra Talhada.
         </p>
         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -22,7 +22,7 @@ const CourseMap = () => {
               />
             </div>
             <p className="text-center text-sm text-gray-500 mt-3">
-              Mapa ilustrativo do percurso. Detalhes exatos serão fornecidos no kit do atleta.
+              Mapa do percurso. Com detalhes das rotas e Pontos de Apoio e Hidratação.
             </p>
           </div>
           
