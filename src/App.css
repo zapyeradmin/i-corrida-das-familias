@@ -1,8 +1,29 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
+}
+
+/* Remover rolagem horizontal em dispositivos móveis */
+html, body {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Aplicar efeito nativo de toque */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Definir altura mínima para mobile */
+@media (max-width: 767px) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
 }
 
 .logo {
@@ -11,9 +32,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -39,4 +62,31 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Estilos específicos para mobile */
+@media (max-width: 767px) {
+  /* Aumentar áreas de toque */
+  button, 
+  a.btn,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Estilo de botão mobile nativo */
+  button:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  
+  /* Transições suaves */
+  .page-transition {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Melhorar legibilidade de texto */
+  p, span, div {
+    line-height: 1.5;
+  }
 }
