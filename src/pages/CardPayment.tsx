@@ -1,17 +1,34 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Home } from "lucide-react";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Link } from 'react-router-dom';
+
 const CardPayment = () => {
   const isMobile = useIsMobile();
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
       <Navbar className="bg-blue-600" />
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
+        {/* Back to Home Button */}
+        <div className="mb-6 md:mb-8">
+          <Link to="/">
+            <Button 
+              variant="homeButton" 
+              size="lg" 
+              className="flex items-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+            >
+              <Home className="h-4 w-4" />
+              Voltar à Página Inicial
+            </Button>
+          </Link>
+        </div>
+        
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-6 md:mb-10">
             <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 text-blue-800 font-poppins">
