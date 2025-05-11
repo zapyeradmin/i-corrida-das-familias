@@ -1,12 +1,12 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, Home } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 
 const Auth = () => {
@@ -183,6 +183,13 @@ const Auth = () => {
                 </p>
               )}
             </div>
+            
+            <Link to="/" className="w-full">
+              <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+                <Home className="h-4 w-4" />
+                Voltar à Página Inicial
+              </Button>
+            </Link>
           </CardFooter>
         </Card>
 

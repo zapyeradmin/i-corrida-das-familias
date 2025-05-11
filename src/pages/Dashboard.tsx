@@ -9,7 +9,7 @@ import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import DashboardStats from '@/components/dashboard/DashboardStats';
 import AthletesContent from '@/components/dashboard/AthletesContent';
 import DashboardFooter from '@/components/dashboard/DashboardFooter';
-import { Palette } from 'lucide-react';
+import { Palette, Home } from 'lucide-react';
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
@@ -38,16 +38,28 @@ const Dashboard = () => {
     deleteAthlete
   } = useAthletesData();
   
+  // Custom sign out function that redirects to home
+  const handleSignOut = async () => {
+    await signOut();
+    window.location.href = '/';
+  };
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header with gradient */}
-      <DashboardHeader userEmail={user?.email} signOut={signOut} />
+      <DashboardHeader userEmail={user?.email} signOut={handleSignOut} />
 
       {/* Main content */}
       <main className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Admin Actions */}
         <div className="mb-8">
-          <div className="flex justify-end">
+          <div className="flex justify-between">
+            <Link to="/">
+              <Button variant="outline" className="flex items-center gap-2">
+                <Home className="h-4 w-4" />
+                Voltar à Página Inicial
+              </Button>
+            </Link>
             <Link to="/site-design">
               <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
                 <Palette className="h-4 w-4 mr-2" />
