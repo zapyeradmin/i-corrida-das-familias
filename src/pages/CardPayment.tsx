@@ -15,8 +15,8 @@ const CardPayment = () => {
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
-        {/* Back to Home Button */}
-        <div className="mb-6 md:mb-8">
+        {/* Back to Home Button - Updated positioning */}
+        <div className="mb-6 md:mb-8 max-w-3xl mx-auto">
           <Link to="/">
             <Button 
               variant="homeButton" 
