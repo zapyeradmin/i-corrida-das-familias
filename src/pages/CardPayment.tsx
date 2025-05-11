@@ -1,32 +1,18 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink, Home } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Separator } from '@/components/ui/separator';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Link } from 'react-router-dom';
-
 const CardPayment = () => {
   const isMobile = useIsMobile();
-  
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
-      <Navbar />
+  return <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
+      <Navbar className="bg-blue-600" />
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
         <div className="max-w-3xl mx-auto">
-          <div className="flex justify-start mb-6">
-            <Link to="/">
-              <Button variant="homeButton" size="lg" className="flex items-center gap-2">
-                <Home className="h-4 w-4" />
-                Voltar à Página Inicial
-              </Button>
-            </Link>
-          </div>
-          
           <div className="text-center mb-6 md:mb-10">
             <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 text-blue-800 font-poppins">
               Pagamento com <span className="text-event-blue">Cartão</span>
@@ -59,20 +45,13 @@ const CardPayment = () => {
               
               {/* Credit Card Image - UPDATED IMAGE */}
               <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border border-gray-100 transition-all hover:shadow-lg w-full flex justify-center">
-                <img 
-                  src="/lovable-uploads/5d9336c3-1fd7-432b-880f-fa60531c407b.png" 
-                  alt="Corrida das Famílias" 
-                  className="max-w-full h-auto md:max-w-md"
-                />
+                <img src="/lovable-uploads/5d9336c3-1fd7-432b-880f-fa60531c407b.png" alt="Corrida das Famílias" className="max-w-full h-auto md:max-w-md" />
               </div>
               
               <Separator className="my-3 md:my-6" />
               
               {/* Payment Button */}
-              <Button 
-                className="w-full bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-xl transition-all py-3 md:py-6 text-sm md:text-base"
-                onClick={() => window.open("https://loja.infinitepay.io/francojoao91/rpt3350-inscricao-corrida-das-familias-2025", "_blank")}
-              >
+              <Button className="w-full bg-green-600 hover:bg-green-700 shadow-lg hover:shadow-xl transition-all py-3 md:py-6 text-sm md:text-base" onClick={() => window.open("https://loja.infinitepay.io/francojoao91/rpt3350-inscricao-corrida-das-familias-2025", "_blank")}>
                 <ExternalLink className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                 Seguir para pagamento
               </Button>
@@ -94,10 +73,7 @@ const CardPayment = () => {
                 </p>
               </div>
               
-              <Button 
-                className="w-full bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all py-3 md:py-6 text-sm md:text-base"
-                onClick={() => window.open("http://wa.me/5587996709355", "_blank")}
-              >
+              <Button className="w-full bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all py-3 md:py-6 text-sm md:text-base" onClick={() => window.open("http://wa.me/5587996709355", "_blank")}>
                 <ExternalLink className="mr-2 h-4 w-4 md:h-5 md:w-5" />
                 Enviar minha Confirmação de Pagamento
               </Button>
@@ -107,8 +83,6 @@ const CardPayment = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default CardPayment;
