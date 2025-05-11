@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const CardPayment = () => {
   const isMobile = useIsMobile();
   return <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
-      <Navbar className="bg-blue-600" />
+      <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
         {/* Back to Home Button */}
