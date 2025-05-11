@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -185,7 +184,7 @@ const Auth = () => {
             </div>
             
             <Link to="/" className="w-full">
-              <Button variant="outline" className="w-full flex items-center justify-center gap-2">
+              <Button variant="homeButton" size="lg" className="w-full flex items-center justify-center gap-2">
                 <Home className="h-4 w-4" />
                 Voltar à Página Inicial
               </Button>

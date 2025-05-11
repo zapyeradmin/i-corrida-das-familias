@@ -18,9 +18,9 @@ const CardPayment = () => {
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
         <div className="max-w-3xl mx-auto">
-          <div className="flex justify-start mb-4">
+          <div className="flex justify-start mb-6">
             <Link to="/">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="homeButton" size="lg" className="flex items-center gap-2">
                 <Home className="h-4 w-4" />
                 Voltar à Página Inicial
               </Button>

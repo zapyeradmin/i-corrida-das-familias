@@ -55,13 +55,13 @@ const Dashboard = () => {
         <div className="mb-8">
           <div className="flex justify-between">
             <Link to="/">
-              <Button variant="outline" className="flex items-center gap-2">
+              <Button variant="homeButton" size="lg" className="flex items-center gap-2">
                 <Home className="h-4 w-4" />
                 Voltar à Página Inicial
               </Button>
             </Link>
             <Link to="/site-design">
-              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 font-poppins tracking-wide shadow-md hover:shadow-lg transition-all duration-300">
                 <Palette className="h-4 w-4 mr-2" />
                 Design do Site
               </Button>
