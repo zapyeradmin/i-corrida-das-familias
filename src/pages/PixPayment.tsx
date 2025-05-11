@@ -26,7 +26,7 @@ const PixPayment = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-blue-50">
+    <div className="min-h-screen flex flex-col bg-[#014573]">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 mt-16">
@@ -41,10 +41,10 @@ const PixPayment = () => {
           </div>
           
           <div className="text-center mb-6 md:mb-10">
-            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 text-blue-800 font-poppins">
+            <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-3 text-white font-poppins">
               Pagamento <span className="text-event-blue">PIX</span>
             </h1>
-            <p className="text-gray-600 text-sm md:text-base max-w-lg mx-auto px-2">
+            <p className="text-gray-200 text-sm md:text-base max-w-lg mx-auto px-2">
               Complete seu pagamento e envie seu comprovante para confirmar sua inscrição na 1ª Corrida das Famílias 2025
             </p>
             <div className="mt-3 md:mt-4">
