@@ -37,7 +37,7 @@ const Timeline = () => {
                 <div className="flex items-center justify-between mb-2 flex-wrap">
                   <h3 className="font-bold text-xl text-event-blue">Entrega dos Kits</h3>
                   <time className="font-medium text-sm text-event-orange bg-orange-100 px-2 py-1 rounded mt-2 sm:mt-0">
-                    12 e 13/05/2025
+                    12 e 13/06/2025
                   </time>
                 </div>
                 <p className="text-gray-600">
@@ -52,7 +52,7 @@ const Timeline = () => {
                 <div className="flex items-center justify-between mb-2 flex-wrap">
                   <h3 className="font-bold text-xl text-event-orange">Dia da Corrida das Famílias!</h3>
                   <time className="font-medium text-sm text-event-orange bg-orange-100 px-2 py-1 rounded mt-2 sm:mt-0">
-                    15/05/2025
+                    15/06/2025
                   </time>
                 </div>
                 <ul className="list-disc list-inside text-gray-600 space-y-1 pl-1">
@@ -71,7 +71,7 @@ const Timeline = () => {
                 <div className="flex items-center justify-between mb-2 flex-wrap">
                   <h3 className="font-bold text-xl text-event-blue">Fotos e Resultados</h3>
                   <time className="font-medium text-sm text-event-orange bg-orange-100 px-2 py-1 rounded mt-2 sm:mt-0">
-                    15/05/2025
+                    16/06/2025
                   </time>
                 </div>
                 <p className="text-gray-600">
