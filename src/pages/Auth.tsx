@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -12,7 +13,6 @@ const Auth = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [view, setView] = useState<'sign-in' | 'sign-up'>('sign-in');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -39,36 +39,6 @@ const Auth = () => {
     }
   };
 
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      setLoading(true);
-      
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-
-      toast.success('Cadastro realizado! Verifique seu email para confirmar a conta.');
-      setView('sign-in');
-    } catch (error: any) {
-      toast.error(error.message || 'Erro ao criar conta');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const toggleView = () => {
-    setView(view === 'sign-in' ? 'sign-up' : 'sign-in');
-    // Reset form fields when switching views
-    setEmail('');
-    setPassword('');
-    setShowPassword(false);
-  };
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -89,17 +59,15 @@ const Auth = () => {
           <div className="h-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700"></div>
           <CardHeader className="space-y-1 text-center pb-2">
             <CardTitle className="text-2xl font-bold text-gray-800">
-              {view === 'sign-in' ? 'Bem-vindo de volta!' : 'Crie sua conta'}
+              Bem-vindo de volta!
             </CardTitle>
             <CardDescription className="text-gray-600">
-              {view === 'sign-in' 
-                ? 'Entre com suas credenciais para acessar o painel' 
-                : 'Preencha os dados abaixo para criar uma nova conta'}
+              Entre com suas credenciais para acessar o painel
             </CardDescription>
           </CardHeader>
 
           <CardContent>
-            <form onSubmit={view === 'sign-in' ? handleSignIn : handleSignUp} className="space-y-4">
+            <form onSubmit={handleSignIn} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
                 <div className="relative">
@@ -142,7 +110,7 @@ const Auth = () => {
                   </button>
                 </div>
                 <p className="text-xs text-right text-gray-500">
-                  {view === 'sign-in' && 'Mínimo de 6 caracteres'}
+                  Mínimo de 6 caracteres
                 </p>
               </div>
 
@@ -151,38 +119,12 @@ const Auth = () => {
                 className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 transition-all duration-300"
                 disabled={loading}
               >
-                {loading ? 'Processando...' : view === 'sign-in' ? 'Entrar' : 'Cadastrar'}
+                {loading ? 'Processando...' : 'Entrar'}
               </Button>
             </form>
           </CardContent>
 
-          <CardFooter className="flex flex-col space-y-4 border-t border-gray-100 bg-gray-50 px-6 py-4">
-            <div className="text-center text-sm">
-              {view === 'sign-in' ? (
-                <p className="text-gray-600">
-                  Não tem uma conta?{' '}
-                  <button
-                    type="button"
-                    onClick={toggleView}
-                    className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors"
-                  >
-                    Criar conta
-                  </button>
-                </p>
-              ) : (
-                <p className="text-gray-600">
-                  Já possui uma conta?{' '}
-                  <button
-                    type="button"
-                    onClick={toggleView}
-                    className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors"
-                  >
-                    Fazer login
-                  </button>
-                </p>
-              )}
-            </div>
-            
+          <CardFooter className="flex flex-col space-y-4 border-t border-gray-100 bg-gray-50 px-6 py-4">            
             <Link to="/" className="w-full">
               <Button variant="homeButton" size="lg" className="w-full flex items-center justify-center gap-2">
                 <Home className="h-4 w-4" />
