@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -142,12 +141,8 @@ const RegistrationForm = () => {
         paymentMethod: ''
       });
       
-      // Redirect based on payment method
-      if (athleteData.payment_method === 'PIX') {
-        navigate('/pix-payment');
-      } else if (athleteData.payment_method === 'CARTAO_CREDITO') {
-        navigate('/card-payment');
-      }
+      // Redirect to InfinitePay link regardless of payment method
+      window.location.href = "https://loja.infinitepay.io/francojoao91/rpt3350-inscricao-corrida-das-familias-2025";
       
     } catch (error: any) {
       console.error('Error inserting athlete data:', error);
