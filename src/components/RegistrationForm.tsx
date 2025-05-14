@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
@@ -26,17 +27,6 @@ const RegistrationForm = () => {
       ...formData,
       [name]: value
     });
-  };
-  
-  const getPaymentInstructions = (method: string): string => {
-    switch(method) {
-      case 'PIX':
-        return 'Chave PIX: evento@corrida.com.br (CNPJ). Envie o comprovante para comprovantes@corrida.com.br com seu nome e CPF.';
-      case 'CARTAO_CREDITO':
-        return 'Você será redirecionado para a página de pagamento após confirmar sua inscrição.';
-      default:
-        return '';
-    }
   };
   
   const validateForm = (): boolean => {
@@ -152,7 +142,7 @@ const RegistrationForm = () => {
         paymentMethod: ''
       });
       
-      // Redirecionar com base no método de pagamento
+      // Redirect based on payment method
       if (athleteData.payment_method === 'PIX') {
         navigate('/pix-payment');
       } else if (athleteData.payment_method === 'CARTAO_CREDITO') {
@@ -336,20 +326,6 @@ const RegistrationForm = () => {
               <option value="PIX">PIX</option>
               <option value="CARTAO_CREDITO">Cartão de Crédito</option>
             </select>
-            {formData.paymentMethod && (
-              <div className="mt-1.5">
-                <p className="text-xs text-gray-500">
-                  {getPaymentInstructions(formData.paymentMethod)}
-                </p>
-                {formData.paymentMethod === 'PIX' && (
-                  <p className="text-xs text-blue-600 mt-1">
-                    <Link to="/pix-payment" className="underline hover:text-blue-800">
-                      Clique aqui para acessar a página de pagamento PIX
-                    </Link>
-                  </p>
-                )}
-              </div>
-            )}
           </div>
 
           <div className="text-center">
