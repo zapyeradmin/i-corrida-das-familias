@@ -9,11 +9,11 @@ import AthleteInfoCard from '@/components/dashboard/AthleteInfoCard';
 import RegistrationInfoCard from '@/components/dashboard/RegistrationInfoCard';
 import EventInfoCard from '@/components/dashboard/EventInfoCard';
 import StatusBanner from '@/components/dashboard/StatusBanner';
-import { LogOut, Home, ArrowLeft, MessageCircle } from 'lucide-react';
+import { Home, ArrowLeft, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 const AthleteDashboard = () => {
-  const { athlete, logout, verifyAthleteSession } = useAthleteAuth();
+  const { athlete, verifyAthleteSession } = useAthleteAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,17 +35,6 @@ const AthleteDashboard = () => {
     checkSession();
   }, [verifyAthleteSession, navigate]);
 
-  const handleLogout = () => {
-    try {
-      logout();
-      // Use window.location.href for a full page refresh and redirect
-      window.location.href = '/atleta/login';
-    } catch (error) {
-      console.error('Erro ao fazer logout:', error);
-      toast.error('Erro ao sair da conta. Tente novamente.');
-    }
-  };
-
   const handleBackToHome = () => {
     // Use window.location.href for a more reliable navigation to home
     window.location.href = '/';
@@ -66,15 +55,6 @@ const AthleteDashboard = () => {
             >
               <ArrowLeft size={16} />
               Voltar à Página Principal
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              onClick={handleLogout}
-              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2"
-            >
-              <LogOut size={16} />
-              Sair
             </Button>
           </div>
           
