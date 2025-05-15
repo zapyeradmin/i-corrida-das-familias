@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ChevronDown, MessageCircleQuestion } from "lucide-react";
 
 const FAQ = () => {
   const faqItems = [
@@ -105,25 +106,51 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-12 md:py-16 bg-blue-700 text-white">
+    <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-blue-800 to-indigo-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 font-poppins">
-          Perguntas Frequentes <span className="text-orange-400">(FAQ)</span>
-        </h2>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center p-2 bg-blue-600 rounded-full mb-4">
+            <MessageCircleQuestion className="h-8 w-8 text-white" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
+            Perguntas <span className="text-orange-400">Frequentes</span>
+          </h2>
+          <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+            Encontre respostas para as dúvidas mais comuns sobre a Corrida das Famílias
+          </p>
+        </div>
         
-        <div className="max-w-3xl mx-auto bg-white rounded-xl p-6 shadow-lg">
-          <Accordion type="single" collapsible className="w-full divide-y divide-gray-200">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-none">
-                <AccordionTrigger className="text-left font-semibold text-blue-800 hover:text-blue-600 py-4 px-2">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-700 px-2 pb-4">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="max-w-4xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-1 shadow-xl">
+          <div className="bg-white rounded-xl overflow-hidden">
+            <Accordion type="single" collapsible className="w-full divide-y divide-gray-100">
+              {faqItems.map((item, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="border-none"
+                >
+                  <AccordionTrigger 
+                    className="flex justify-between items-center w-full py-5 px-6 text-left font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50/50 transition-all"
+                  >
+                    <span className="text-lg">{item.question}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-700 px-6 pb-6 pt-2 leading-relaxed">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+        
+        <div className="text-center mt-12">
+          <a 
+            href="#registration" 
+            className="inline-flex items-center px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow-lg transition-all"
+          >
+            Inscreva-se Agora
+            <ChevronDown className="ml-2 h-5 w-5" />
+          </a>
         </div>
       </div>
     </section>
