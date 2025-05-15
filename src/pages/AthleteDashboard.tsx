@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAthleteAuth } from '@/hooks/useAthleteAuth';
 import Navbar from '@/components/Navbar';
@@ -10,13 +10,28 @@ import RegistrationInfoCard from '@/components/dashboard/RegistrationInfoCard';
 import EventInfoCard from '@/components/dashboard/EventInfoCard';
 import StatusBanner from '@/components/dashboard/StatusBanner';
 import { LogOut } from 'lucide-react';
+import { toast } from 'sonner';
 
 const AthleteDashboard = () => {
-  const { athlete, logout } = useAthleteAuth();
+  const { athlete, logout, verifyAthleteSession } = useAthleteAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Verify the session when the component mounts
+    const checkSession = async () => {
+      try {
+        await verifyAthleteSession();
+      } catch (error) {
+        console.error('Error verifying session:', error);
+      }
+    };
+    
+    checkSession();
+  }, [verifyAthleteSession]);
 
   const handleLogout = () => {
     logout();
+    toast.success('Logout realizado com sucesso');
     navigate('/atleta/login');
   };
 

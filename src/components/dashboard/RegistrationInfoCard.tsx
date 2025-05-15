@@ -31,20 +31,29 @@ const RegistrationInfoCard: React.FC<RegistrationInfoCardProps> = ({
     });
   };
 
+  const normalizeStatus = (status?: string) => {
+    if (!status) return "";
+    return status.toLowerCase();
+  };
+
   const getPaymentStatusText = (status?: string) => {
-    switch (status) {
+    const normalizedStatus = normalizeStatus(status);
+    switch (normalizedStatus) {
       case 'pending': return 'Pendente';
       case 'confirmed': return 'Confirmado';
       case 'canceled': return 'Cancelado';
+      case 'cancelled': return 'Cancelado';
       default: return 'Desconhecido';
     }
   };
   
   const getPaymentStatusClass = (status?: string) => {
-    switch (status) {
-      case 'pending': return 'text-yellow-600';
-      case 'confirmed': return 'text-green-600';
-      case 'canceled': return 'text-red-600';
+    const normalizedStatus = normalizeStatus(status);
+    switch (normalizedStatus) {
+      case 'pending': return 'text-yellow-600 font-bold';
+      case 'confirmed': return 'text-green-600 font-bold';
+      case 'canceled': return 'text-red-600 font-bold';
+      case 'cancelled': return 'text-red-600 font-bold';
       default: return 'text-gray-600';
     }
   };
@@ -85,8 +94,8 @@ const RegistrationInfoCard: React.FC<RegistrationInfoCardProps> = ({
             <h4 className="text-sm font-medium text-gray-500">Forma de pagamento</h4>
             {paymentMethod ? (
               <p className="text-gray-900">
-                {paymentMethod === 'pix' ? 'PIX' : 
-                 paymentMethod === 'credit_card' ? 'Cartão de Crédito' : 
+                {paymentMethod === 'pix' || paymentMethod === 'PIX' ? 'PIX' : 
+                 paymentMethod === 'credit_card' || paymentMethod === 'CARTAO_CREDITO' ? 'Cartão de Crédito' : 
                  paymentMethod === 'bank_slip' ? 'Boleto' : paymentMethod}
               </p>
             ) : (
@@ -97,7 +106,7 @@ const RegistrationInfoCard: React.FC<RegistrationInfoCardProps> = ({
           <div>
             <h4 className="text-sm font-medium text-gray-500">Status do pagamento</h4>
             {paymentStatus ? (
-              <p className={`font-medium ${getPaymentStatusClass(paymentStatus)}`}>
+              <p className={`${getPaymentStatusClass(paymentStatus)} text-lg`}>
                 {getPaymentStatusText(paymentStatus)}
               </p>
             ) : (
