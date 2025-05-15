@@ -32,6 +32,22 @@ const AthleteInfoCard: React.FC<AthleteInfoCardProps> = ({
     return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
   };
 
+  const mapGender = (genderValue?: string) => {
+    if (!genderValue) return "";
+    
+    const genderMap: Record<string, string> = {
+      'MASCULINO': 'Masculino',
+      'FEMININO': 'Feminino',
+      'OUTRO': 'Outro',
+      'PREFIRO_NAO_INFORMAR': 'Prefiro não informar',
+      // Legacy mappings for backward compatibility
+      'M': 'Masculino',
+      'F': 'Feminino'
+    };
+    
+    return genderMap[genderValue] || genderValue;
+  };
+
   return (
     <Card className="overflow-hidden border-t-4 border-blue-500 shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition-shadow">
       <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
@@ -85,7 +101,7 @@ const AthleteInfoCard: React.FC<AthleteInfoCardProps> = ({
           <div>
             <h4 className="text-sm font-medium text-gray-500">Sexo</h4>
             {gender ? (
-              <p className="text-gray-900">{gender === 'M' ? 'Masculino' : 'Feminino'}</p>
+              <p className="text-gray-900">{mapGender(gender)}</p>
             ) : (
               <Skeleton className="h-5 w-1/2" />
             )}
