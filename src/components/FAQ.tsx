@@ -113,7 +113,7 @@ const FAQ = () => {
             <MessageCircleQuestion className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
-            Perguntas <span className="text-orange-400">Frequentes</span>
+            <span className="text-purple-400">Perguntas</span> <span className="text-orange-400">Frequentes</span>
           </h2>
           <p className="text-lg text-blue-100 max-w-2xl mx-auto">
             Encontre respostas para as dúvidas mais comuns sobre a Corrida das Famílias
