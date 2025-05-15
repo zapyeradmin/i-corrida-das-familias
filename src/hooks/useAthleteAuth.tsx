@@ -56,13 +56,13 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
 
       const { data, error } = await supabase.rpc('verify_athlete_token', { token });
       
-      if (error || !data.success) {
+      if (error || !data || data.success === false) {
         localStorage.removeItem(ATHLETE_TOKEN_KEY);
         setAthlete(null);
         return false;
       }
 
-      setAthlete(data.athlete);
+      setAthlete(data.athlete as Athlete);
       return true;
     } catch (error) {
       console.error('Erro ao verificar sessão do atleta:', error);
@@ -80,14 +80,14 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
         cpf_prefix: cpfPrefix
       });
 
-      if (error || !data.success) {
-        toast.error(data?.message || 'Erro ao fazer login. Verifique suas credenciais.');
+      if (error || !data || data.success === false) {
+        toast.error(data?.message as string || 'Erro ao fazer login. Verifique suas credenciais.');
         return false;
       }
 
       // Salva o token e os dados do atleta
-      localStorage.setItem(ATHLETE_TOKEN_KEY, data.token);
-      setAthlete(data.athlete);
+      localStorage.setItem(ATHLETE_TOKEN_KEY, data.token as string);
+      setAthlete(data.athlete as Athlete);
       toast.success('Login realizado com sucesso!');
       return true;
     } catch (error: any) {
