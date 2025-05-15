@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { NavbarExtensions } from './NavbarUpdates';
-import logoAzul from '/lovable-uploads/d7887a43-bd04-4b1b-94e9-df52c5caa08c.png';
 import logoBranca from '/lovable-uploads/0ced6a80-33a2-4da0-bbdd-ec8fd2d48ffa.png';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -35,7 +34,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center py-3 md:py-4 px-4 sm:px-6">
         <a href="#hero" className="brand-logo">
           <img 
-            src={scrolled ? logoAzul : logoBranca} 
+            src={logoBranca} 
             alt="Corrida das Famílias" 
             className="h-9 md:h-12 w-auto transition-all duration-300"
           />
