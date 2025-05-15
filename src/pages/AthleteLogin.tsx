@@ -1,13 +1,12 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAthleteAuth } from '@/hooks/useAthleteAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import { UserRound, Lock, Home } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { UserRound, Lock, Home, ArrowLeft } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 
 const AthleteLogin = () => {
@@ -15,8 +14,15 @@ const AthleteLogin = () => {
   const [cpfPrefix, setCpfPrefix] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login } = useAthleteAuth();
+  const { login, athlete } = useAthleteAuth();
   const navigate = useNavigate();
+
+  // Check if athlete is already logged in
+  useEffect(() => {
+    if (athlete) {
+      navigate('/atleta/perfil');
+    }
+  }, [athlete, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,8 +42,12 @@ const AthleteLogin = () => {
     try {
       const success = await login(email, cpfPrefix);
       if (success) {
+        toast.success('Login realizado com sucesso!');
         navigate('/atleta/perfil');
       }
+    } catch (error) {
+      console.error('Erro no login:', error);
+      toast.error('Erro ao fazer login. Verifique suas credenciais.');
     } finally {
       setIsLoading(false);
     }
@@ -128,7 +138,7 @@ const AthleteLogin = () => {
           <CardFooter className="flex flex-col space-y-4 border-t border-gray-100 bg-gray-50 px-4 md:px-6 py-4">            
             <Link to="/" className="w-full">
               <Button variant="homeButton" size="lg" className="w-full flex items-center justify-center gap-2 py-5 text-sm">
-                <Home className="h-4 w-4" />
+                <ArrowLeft className="h-4 w-4" />
                 Voltar à Página Inicial
               </Button>
             </Link>

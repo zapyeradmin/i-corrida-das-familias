@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAthleteAuth } from '@/hooks/useAthleteAuth';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,7 +9,7 @@ import AthleteInfoCard from '@/components/dashboard/AthleteInfoCard';
 import RegistrationInfoCard from '@/components/dashboard/RegistrationInfoCard';
 import EventInfoCard from '@/components/dashboard/EventInfoCard';
 import StatusBanner from '@/components/dashboard/StatusBanner';
-import { LogOut } from 'lucide-react';
+import { LogOut, Home, ArrowLeft } from 'lucide-react';
 import { toast } from 'sonner';
 
 const AthleteDashboard = () => {
@@ -20,19 +20,29 @@ const AthleteDashboard = () => {
     // Verify the session when the component mounts
     const checkSession = async () => {
       try {
-        await verifyAthleteSession();
+        const isValid = await verifyAthleteSession();
+        if (!isValid) {
+          toast.error('Sessão inválida ou expirada. Por favor, faça login novamente.');
+          navigate('/atleta/login');
+        }
       } catch (error) {
         console.error('Error verifying session:', error);
+        toast.error('Erro ao verificar sessão. Por favor, faça login novamente.');
+        navigate('/atleta/login');
       }
     };
     
     checkSession();
-  }, [verifyAthleteSession]);
+  }, [verifyAthleteSession, navigate]);
 
   const handleLogout = () => {
     logout();
     toast.success('Logout realizado com sucesso');
     navigate('/atleta/login');
+  };
+
+  const handleBackToHome = () => {
+    navigate('/');
   };
 
   return (
@@ -41,20 +51,29 @@ const AthleteDashboard = () => {
       
       <main className="flex-grow container mx-auto px-4 py-8 mt-28">
         <div className="max-w-4xl mx-auto">
-          {/* Status banner for payment information */}
-          <StatusBanner paymentStatus={athlete?.payment_status} />
-
-          {/* Logout button in a floating action button style */}
-          <div className="fixed bottom-6 right-6">
+          {/* Navigation buttons */}
+          <div className="flex items-center justify-between mb-6">
+            <Button 
+              variant="outline" 
+              onClick={handleBackToHome}
+              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2"
+            >
+              <ArrowLeft size={16} />
+              Voltar à Página Principal
+            </Button>
+            
             <Button 
               variant="outline" 
               onClick={handleLogout}
-              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2 rounded-full px-4 py-2 shadow-lg"
+              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2"
             >
               <LogOut size={16} />
               Sair
             </Button>
           </div>
+          
+          {/* Status banner for payment information */}
+          <StatusBanner paymentStatus={athlete?.payment_status} />
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Athlete Information Card */}
@@ -80,6 +99,19 @@ const AthleteDashboard = () => {
           {/* Event Information Card */}
           <div className="mt-6">
             <EventInfoCard />
+          </div>
+
+          {/* Mobile bottom navigation */}
+          <div className="fixed bottom-6 right-6 md:hidden">
+            <Link to="/">
+              <Button
+                variant="outline"
+                className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm rounded-full p-3 shadow-lg"
+                title="Página Inicial"
+              >
+                <Home size={20} />
+              </Button>
+            </Link>
           </div>
         </div>
       </main>
