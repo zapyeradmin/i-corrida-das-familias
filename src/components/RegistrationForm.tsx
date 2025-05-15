@@ -155,7 +155,7 @@ const RegistrationForm = () => {
   };
   return <section id="registration" className="pt-12 md:pt-16 pb-16 md:pb-20 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins text-white">
           Inscreva-se e <span className="text-orange-400">Participe!</span>
         </h2>
         <p className="text-center text-blue-100 mb-10 max-w-xl mx-auto">
