@@ -2,6 +2,7 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { Json } from '@/integrations/supabase/types';
 
 interface Athlete {
   id: string;
@@ -24,6 +25,13 @@ interface AthleteAuthContextType {
   login: (email: string, cpfPrefix: string) => Promise<boolean>;
   logout: () => void;
   verifyAthleteSession: () => Promise<boolean>;
+}
+
+interface AthleteLoginResponse {
+  success: boolean;
+  message?: string;
+  token?: string;
+  athlete?: Athlete;
 }
 
 const AthleteAuthContext = createContext<AthleteAuthContextType | undefined>(undefined);
@@ -56,13 +64,23 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
 
       const { data, error } = await supabase.rpc('verify_athlete_token', { token });
       
-      if (error || !data || data.success === false) {
+      if (error || !data) {
         localStorage.removeItem(ATHLETE_TOKEN_KEY);
         setAthlete(null);
         return false;
       }
 
-      setAthlete(data.athlete as Athlete);
+      const typedData = data as unknown as AthleteLoginResponse;
+      
+      if (!typedData.success) {
+        localStorage.removeItem(ATHLETE_TOKEN_KEY);
+        setAthlete(null);
+        return false;
+      }
+
+      if (typedData.athlete) {
+        setAthlete(typedData.athlete);
+      }
       return true;
     } catch (error) {
       console.error('Erro ao verificar sessão do atleta:', error);
@@ -80,16 +98,27 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
         cpf_prefix: cpfPrefix
       });
 
-      if (error || !data || data.success === false) {
-        toast.error(data?.message as string || 'Erro ao fazer login. Verifique suas credenciais.');
+      if (error || !data) {
+        toast.error('Erro ao fazer login. Verifique suas credenciais.');
+        return false;
+      }
+
+      const typedData = data as unknown as AthleteLoginResponse;
+      
+      if (!typedData.success) {
+        toast.error(typedData.message || 'Credenciais inválidas.');
         return false;
       }
 
       // Salva o token e os dados do atleta
-      localStorage.setItem(ATHLETE_TOKEN_KEY, data.token as string);
-      setAthlete(data.athlete as Athlete);
-      toast.success('Login realizado com sucesso!');
-      return true;
+      if (typedData.token && typedData.athlete) {
+        localStorage.setItem(ATHLETE_TOKEN_KEY, typedData.token);
+        setAthlete(typedData.athlete);
+        toast.success('Login realizado com sucesso!');
+        return true;
+      }
+      
+      return false;
     } catch (error: any) {
       console.error('Erro no login:', error);
       toast.error('Erro ao fazer login. Tente novamente mais tarde.');
