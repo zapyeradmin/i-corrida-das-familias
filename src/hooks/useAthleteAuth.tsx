@@ -126,11 +126,21 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
     }
   };
 
-  // Logout do atleta
+  // Logout do atleta - Corrigido para garantir limpeza completa do estado
   const logout = () => {
-    localStorage.removeItem(ATHLETE_TOKEN_KEY);
-    setAthlete(null);
-    toast.info('Você saiu da sua conta.');
+    try {
+      // Remove o token de autenticação
+      localStorage.removeItem(ATHLETE_TOKEN_KEY);
+      
+      // Limpa o estado do atleta
+      setAthlete(null);
+      
+      // Notifica o usuário
+      toast.success('Você saiu da sua conta.');
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+      toast.error('Erro ao sair da conta. Tente novamente.');
+    }
   };
 
   return (

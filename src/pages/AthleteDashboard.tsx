@@ -36,9 +36,13 @@ const AthleteDashboard = () => {
   }, [verifyAthleteSession, navigate]);
 
   const handleLogout = () => {
-    logout();
-    toast.success('Logout realizado com sucesso');
-    navigate('/atleta/login');
+    try {
+      logout();
+      navigate('/atleta/login');
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+      toast.error('Erro ao sair da conta. Tente novamente.');
+    }
   };
 
   const handleBackToHome = () => {
