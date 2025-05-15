@@ -39,9 +39,9 @@ const AthleteDashboard = () => {
     <div className="min-h-screen flex flex-col bg-[#1d48c0]">
       <Navbar />
       
-      <main className="flex-grow container mx-auto px-4 py-8">
+      <main className="flex-grow container mx-auto px-4 py-8 mt-20">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-6 bg-blue-800/40 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+          <div className="flex justify-between items-center mb-8 bg-blue-800/40 p-4 rounded-lg backdrop-blur-sm shadow-lg">
             <h1 className="text-3xl font-bold text-white">Minha Inscrição</h1>
             <Button 
               variant="outline" 
