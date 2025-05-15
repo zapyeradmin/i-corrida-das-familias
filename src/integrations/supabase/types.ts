@@ -62,7 +62,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      athlete_login: {
+        Args: { email_input: string; cpf_prefix: string }
+        Returns: Json
+      }
+      get_athlete_status: {
+        Args: { email_input: string }
+        Returns: string
+      }
+      verify_athlete_token: {
+        Args: { token: string }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never

@@ -13,33 +13,47 @@ import CardPayment from "./pages/CardPayment";
 import SiteDesign from "./pages/SiteDesign";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { AuthProvider } from "./hooks/useAuth";
+import { AthleteAuthProvider } from "./hooks/useAthleteAuth";
+import { AthletePrivateRoute } from "./components/AthletePrivateRoute";
+import AthleteLogin from "./pages/AthleteLogin";
+import AthleteDashboard from "./pages/AthleteDashboard";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/pix-payment" element={<PixPayment />} />
-            <Route path="/card-payment" element={<CardPayment />} />
-            
-            {/* Protected routes */}
-            <Route element={<PrivateRoute />}>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/site-design" element={<SiteDesign />} />
-            </Route>
-            
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <AthleteAuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/pix-payment" element={<PixPayment />} />
+              <Route path="/card-payment" element={<CardPayment />} />
+              
+              {/* Rotas do atleta */}
+              <Route path="/atleta/login" element={<AthleteLogin />} />
+              
+              {/* Rotas protegidas do atleta */}
+              <Route element={<AthletePrivateRoute />}>
+                <Route path="/atleta/perfil" element={<AthleteDashboard />} />
+              </Route>
+              
+              {/* Protected routes */}
+              <Route element={<PrivateRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/site-design" element={<SiteDesign />} />
+              </Route>
+              
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AthleteAuthProvider>
     </AuthProvider>
   </QueryClientProvider>
 );
