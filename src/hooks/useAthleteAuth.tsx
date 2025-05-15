@@ -64,7 +64,15 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
 
       const { data, error } = await supabase.rpc('verify_athlete_token', { token });
       
-      if (error || !data) {
+      if (error) {
+        console.error('Erro na verificação do token:', error);
+        localStorage.removeItem(ATHLETE_TOKEN_KEY);
+        setAthlete(null);
+        return false;
+      }
+      
+      if (!data) {
+        console.error('Nenhum dado retornado na verificação do token');
         localStorage.removeItem(ATHLETE_TOKEN_KEY);
         setAthlete(null);
         return false;
@@ -73,6 +81,7 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
       const typedData = data as unknown as AthleteLoginResponse;
       
       if (!typedData.success) {
+        console.error('Token inválido:', typedData.message);
         localStorage.removeItem(ATHLETE_TOKEN_KEY);
         setAthlete(null);
         return false;
@@ -80,8 +89,9 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
 
       if (typedData.athlete) {
         setAthlete(typedData.athlete);
+        return true;
       }
-      return true;
+      return false;
     } catch (error) {
       console.error('Erro ao verificar sessão do atleta:', error);
       localStorage.removeItem(ATHLETE_TOKEN_KEY);
@@ -93,19 +103,31 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
   // Login do atleta usando email e os 3 primeiros dígitos do CPF
   const login = async (email: string, cpfPrefix: string): Promise<boolean> => {
     try {
+      console.log(`Tentando login para: ${email} com prefixo: ${cpfPrefix}`);
+      
       const { data, error } = await supabase.rpc('athlete_login', {
-        email_input: email,
-        cpf_prefix: cpfPrefix
+        email_input: email.trim().toLowerCase(),
+        cpf_prefix: cpfPrefix.trim()
       });
 
-      if (error || !data) {
-        toast.error('Erro ao fazer login. Verifique suas credenciais.');
+      if (error) {
+        console.error('Erro na função athlete_login:', error);
+        toast.error(`Erro ao fazer login: ${error.message}`);
         return false;
       }
 
+      if (!data) {
+        console.error('Nenhum dado retornado pela função athlete_login');
+        toast.error('Erro ao fazer login. Nenhuma resposta do servidor.');
+        return false;
+      }
+
+      console.log('Resposta do login:', data);
+      
       const typedData = data as unknown as AthleteLoginResponse;
       
       if (!typedData.success) {
+        console.error('Login falhou:', typedData.message);
         toast.error(typedData.message || 'Credenciais inválidas.');
         return false;
       }
@@ -114,14 +136,17 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
       if (typedData.token && typedData.athlete) {
         localStorage.setItem(ATHLETE_TOKEN_KEY, typedData.token);
         setAthlete(typedData.athlete);
+        console.log('Login realizado com sucesso:', typedData.athlete);
         toast.success('Login realizado com sucesso!');
         return true;
       }
       
+      console.error('Login falhou: token ou dados do atleta ausentes');
+      toast.error('Erro ao fazer login. Dados incompletos.');
       return false;
     } catch (error: any) {
       console.error('Erro no login:', error);
-      toast.error('Erro ao fazer login. Tente novamente mais tarde.');
+      toast.error(`Erro ao fazer login: ${error.message || 'Tente novamente mais tarde.'}`);
       return false;
     }
   };
@@ -129,6 +154,8 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
   // Logout do atleta - Corrigido para garantir limpeza completa do estado
   const logout = () => {
     try {
+      console.log('Realizando logout do atleta');
+      
       // Remove o token de autenticação
       localStorage.removeItem(ATHLETE_TOKEN_KEY);
       
@@ -137,6 +164,9 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
       
       // Notifica o usuário
       toast.success('Você saiu da sua conta.');
+      
+      // Redireciona para a página de login com reload completo
+      window.location.href = '/atleta/login';
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
       toast.error('Erro ao sair da conta. Tente novamente.');

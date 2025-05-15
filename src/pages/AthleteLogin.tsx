@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import { UserRound, Lock, Home, ArrowLeft } from 'lucide-react';
+import { UserRound, Lock, ArrowLeft } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 
 const AthleteLogin = () => {
@@ -40,14 +40,20 @@ const AthleteLogin = () => {
     setIsLoading(true);
     
     try {
+      console.log(`Tentando login para: ${email}`);
       const success = await login(email, cpfPrefix);
+      
       if (success) {
+        console.log('Login bem-sucedido, redirecionando...');
         toast.success('Login realizado com sucesso!');
         navigate('/atleta/perfil');
+      } else {
+        console.log('Login falhou');
+        // Toast já é exibido dentro da função login
       }
-    } catch (error) {
-      console.error('Erro no login:', error);
-      toast.error('Erro ao fazer login. Verifique suas credenciais.');
+    } catch (error: any) {
+      console.error('Erro ao processar login:', error);
+      toast.error(`Erro ao fazer login: ${error.message || 'Tente novamente mais tarde.'}`);
     } finally {
       setIsLoading(false);
     }
