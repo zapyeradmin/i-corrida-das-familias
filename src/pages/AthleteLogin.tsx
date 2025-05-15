@@ -91,7 +91,6 @@ const AthleteLogin = () => {
                 type="submit" 
                 className="w-full"
                 disabled={isLoading}
-                variant="homeButton"
               >
                 {isLoading ? (
                   <div className="flex items-center">
