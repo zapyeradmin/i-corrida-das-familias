@@ -9,7 +9,7 @@ import AthleteInfoCard from '@/components/dashboard/AthleteInfoCard';
 import RegistrationInfoCard from '@/components/dashboard/RegistrationInfoCard';
 import EventInfoCard from '@/components/dashboard/EventInfoCard';
 import StatusBanner from '@/components/dashboard/StatusBanner';
-import { LogOut, Home, ArrowLeft } from 'lucide-react';
+import { LogOut, Home, ArrowLeft, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 const AthleteDashboard = () => {
@@ -75,6 +75,24 @@ const AthleteDashboard = () => {
             >
               <LogOut size={16} />
               Sair
+            </Button>
+          </div>
+          
+          {/* Support WhatsApp button */}
+          <div className="mb-6">
+            <Button 
+              variant="outline" 
+              className="w-full bg-green-500 hover:bg-green-600 text-white border-none shadow-lg flex items-center justify-center gap-2 py-6"
+              asChild
+            >
+              <a 
+                href="http://wa.me/5587996709355" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Falar com Suporte
+              </a>
             </Button>
           </div>
           
