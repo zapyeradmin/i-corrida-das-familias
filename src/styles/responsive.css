@@ -1,4 +1,5 @@
 
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .timeline-item::before {
@@ -14,4 +15,13 @@
   .custom-card {
     max-width: 100%;
   }
+  
+  /* WhatsApp button mobile adjustments */
+  a[href^="http://wa.me/"] {
+    bottom: 4rem;
+    right: 1rem;
+    padding: 0.5rem;
+    transform: scale(0.9);
+  }
 }
+

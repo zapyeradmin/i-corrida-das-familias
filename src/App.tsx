@@ -18,6 +18,7 @@ import { AthleteAuthProvider } from "./hooks/useAthleteAuth";
 import { AthletePrivateRoute } from "./components/AthletePrivateRoute";
 import AthleteLogin from "./pages/AthleteLogin";
 import AthleteDashboard from "./pages/AthleteDashboard";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ const App = () => (
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              <WhatsAppButton />
             </BrowserRouter>
           </TooltipProvider>
         </AthleteAuthProvider>
