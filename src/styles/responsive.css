@@ -1,0 +1,17 @@
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline-item::before {
+    left: -25px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .timeline-line {
+    left: -17px;
+  }
+  
+  .custom-card {
+    max-width: 100%;
+  }
+}
