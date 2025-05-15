@@ -21,7 +21,7 @@ const AthleteDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-700 to-blue-900">
+    <div className="min-h-screen flex flex-col bg-[#1d48c0]">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">
