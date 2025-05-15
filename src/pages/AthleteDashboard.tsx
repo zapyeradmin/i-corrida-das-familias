@@ -38,7 +38,8 @@ const AthleteDashboard = () => {
   const handleLogout = () => {
     try {
       logout();
-      navigate('/atleta/login');
+      // Use window.location.href for a full page refresh and redirect
+      window.location.href = '/atleta/login';
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
       toast.error('Erro ao sair da conta. Tente novamente.');
@@ -46,7 +47,8 @@ const AthleteDashboard = () => {
   };
 
   const handleBackToHome = () => {
-    navigate('/');
+    // Use window.location.href for a more reliable navigation to home
+    window.location.href = '/';
   };
 
   return (
