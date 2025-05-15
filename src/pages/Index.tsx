@@ -8,6 +8,7 @@ import Timeline from '@/components/Timeline';
 import CourseMap from '@/components/CourseMap';
 import Sponsors from '@/components/Sponsors';
 import RegistrationForm from '@/components/RegistrationForm';
+import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -24,6 +25,7 @@ const Index = () => {
         <div className="registration-section py-12 md:py-16" id="registration">
           <RegistrationForm />
         </div>
+        <FAQ />
       </main>
       <Footer />
     </div>
