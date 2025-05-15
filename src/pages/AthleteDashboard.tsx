@@ -39,21 +39,22 @@ const AthleteDashboard = () => {
     <div className="min-h-screen flex flex-col bg-[#1d48c0]">
       <Navbar />
       
-      <main className="flex-grow container mx-auto px-4 py-8 mt-20">
+      <main className="flex-grow container mx-auto px-4 py-8 mt-28">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-8 bg-blue-800/40 p-4 rounded-lg backdrop-blur-sm shadow-lg">
-            <h1 className="text-3xl font-bold text-white">Minha Inscrição</h1>
+          {/* Status banner for payment information */}
+          <StatusBanner paymentStatus={athlete?.payment_status} />
+
+          {/* Logout button in a floating action button style */}
+          <div className="fixed bottom-6 right-6">
             <Button 
               variant="outline" 
               onClick={handleLogout}
-              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2"
+              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2 rounded-full px-4 py-2 shadow-lg"
             >
               <LogOut size={16} />
               Sair
             </Button>
           </div>
-          
-          <StatusBanner paymentStatus={athlete?.payment_status} />
 
           <div className="grid gap-6 md:grid-cols-2">
             {/* Athlete Information Card */}
@@ -77,7 +78,9 @@ const AthleteDashboard = () => {
           </div>
           
           {/* Event Information Card */}
-          <EventInfoCard />
+          <div className="mt-6">
+            <EventInfoCard />
+          </div>
         </div>
       </main>
       
