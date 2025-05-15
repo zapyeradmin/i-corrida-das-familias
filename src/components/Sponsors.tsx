@@ -99,7 +99,7 @@ const Sponsors = () => {
         </div>
 
         <div className="text-center">
-          <h3 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">
+          <h3 className="text-3xl md:text-4xl font-bold mb-6 font-poppins text-event-royal">
             <span className="gradient-text">Quer ser um patrocinador</span> e fazer parte deste evento?
           </h3>
           <a 
