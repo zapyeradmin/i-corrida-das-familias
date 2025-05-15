@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CalendarIcon, CreditCard, MapPin, Medal, ShirtIcon } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { ClipboardCheck } from 'lucide-react';
 
 interface RegistrationInfoCardProps {
   course?: string;
@@ -18,106 +19,100 @@ const RegistrationInfoCard: React.FC<RegistrationInfoCardProps> = ({
   paymentStatus,
   createdAt
 }) => {
-  // Format date for display
-  const formatDate = (dateString: string | undefined) => {
-    if (!dateString) return 'Não informado';
-    
-    try {
-      const date = new Date(dateString);
-      return new Intl.DateTimeFormat('pt-BR').format(date);
-    } catch (e) {
-      return dateString;
-    }
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', { 
+      day: '2-digit', 
+      month: '2-digit', 
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   };
 
-  // Map the payment status to a user-friendly display
-  const getPaymentStatus = (status: string | undefined) => {
+  const getPaymentStatusText = (status?: string) => {
     switch (status) {
-      case 'CONFIRMED':
-        return { text: 'Confirmado', color: 'bg-green-100 text-green-800', icon: <CreditCard className="h-5 w-5" /> };
-      case 'PENDING':
-        return { text: 'Pendente', color: 'bg-yellow-100 text-yellow-800', icon: <CreditCard className="h-5 w-5" /> };
-      case 'CANCELLED':
-        return { text: 'Cancelado', color: 'bg-red-100 text-red-800', icon: <CreditCard className="h-5 w-5" /> };
-      default:
-        return { text: 'Desconhecido', color: 'bg-gray-100 text-gray-800', icon: <CreditCard className="h-5 w-5" /> };
-    }
-  };
-
-  // Map the payment method to a user-friendly display
-  const getPaymentMethod = (method: string | undefined) => {
-    switch (method) {
-      case 'PIX':
-        return 'PIX';
-      case 'CARTAO_CREDITO':
-        return 'Cartão de Crédito';
-      default:
-        return 'Não informado';
+      case 'pending': return 'Pendente';
+      case 'confirmed': return 'Confirmado';
+      case 'canceled': return 'Cancelado';
+      default: return 'Desconhecido';
     }
   };
   
-  // Map the shirt size to a user-friendly display
-  const getShirtSize = (size: string | undefined) => {
-    const sizeMap: Record<string, string> = {
-      'P_INFANTIL': 'P Infantil',
-      'P': 'P Adulto',
-      'M': 'M Adulto',
-      'G': 'G Adulto',
-      'GG': 'GG Adulto',
-      'XGG': 'XGG Adulto'
-    };
-    return sizeMap[size || ''] || size || 'Não informado';
+  const getPaymentStatusClass = (status?: string) => {
+    switch (status) {
+      case 'pending': return 'text-yellow-600';
+      case 'confirmed': return 'text-green-600';
+      case 'canceled': return 'text-red-600';
+      default: return 'text-gray-600';
+    }
   };
 
-  const paymentStatusInfo = getPaymentStatus(paymentStatus);
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center">
-          <Medal className="mr-2 h-5 w-5" />
-          Informações da Inscrição
-        </CardTitle>
+    <Card className="overflow-hidden border-t-4 border-blue-400 shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition-shadow">
+      <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+        <div className="flex items-center gap-2">
+          <ClipboardCheck className="h-5 w-5" />
+          <CardTitle className="text-lg font-medium">Dados da Inscrição</CardTitle>
+        </div>
+        <CardDescription className="text-blue-100">
+          Detalhes da sua participação no evento
+        </CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      
+      <CardContent className="p-6 space-y-4">
         <div>
-          <p className="text-sm text-gray-500">Percurso</p>
-          <p className="font-medium flex items-center">
-            <MapPin className="mr-1 h-4 w-4" />
-            {course || '5Km'}
-          </p>
+          <h4 className="text-sm font-medium text-gray-500">Percurso</h4>
+          {course ? (
+            <p className="text-gray-900 font-medium">{course}</p>
+          ) : (
+            <Skeleton className="h-5 w-1/2" />
+          )}
         </div>
-        
+
         <div>
-          <p className="text-sm text-gray-500">Tamanho da Camiseta</p>
-          <p className="font-medium flex items-center">
-            <ShirtIcon className="mr-1 h-4 w-4" />
-            {getShirtSize(shirtSize)}
-          </p>
+          <h4 className="text-sm font-medium text-gray-500">Tamanho da Camiseta</h4>
+          {shirtSize ? (
+            <p className="text-gray-900">{shirtSize}</p>
+          ) : (
+            <Skeleton className="h-5 w-1/4" />
+          )}
         </div>
-        
-        <div>
-          <p className="text-sm text-gray-500">Método de Pagamento</p>
-          <p className="font-medium flex items-center">
-            <CreditCard className="mr-1 h-4 w-4" />
-            {getPaymentMethod(paymentMethod)}
-          </p>
-        </div>
-        
-        <div>
-          <p className="text-sm text-gray-500">Status do Pagamento</p>
-          <div className={`inline-flex items-center px-2.5 py-0.5 rounded-md ${paymentStatusInfo.color}`}>
-            {paymentStatusInfo.icon}
-            <span className="ml-1 font-medium">{paymentStatusInfo.text}</span>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <h4 className="text-sm font-medium text-gray-500">Forma de pagamento</h4>
+            {paymentMethod ? (
+              <p className="text-gray-900">
+                {paymentMethod === 'pix' ? 'PIX' : 
+                 paymentMethod === 'credit_card' ? 'Cartão de Crédito' : 
+                 paymentMethod === 'bank_slip' ? 'Boleto' : paymentMethod}
+              </p>
+            ) : (
+              <Skeleton className="h-5 w-3/4" />
+            )}
+          </div>
+          
+          <div>
+            <h4 className="text-sm font-medium text-gray-500">Status do pagamento</h4>
+            {paymentStatus ? (
+              <p className={`font-medium ${getPaymentStatusClass(paymentStatus)}`}>
+                {getPaymentStatusText(paymentStatus)}
+              </p>
+            ) : (
+              <Skeleton className="h-5 w-1/2" />
+            )}
           </div>
         </div>
-        
+
         <div>
-          <p className="text-sm text-gray-500">Data da Inscrição</p>
-          <p className="font-medium flex items-center">
-            <CalendarIcon className="mr-1 h-4 w-4" />
-            {formatDate(createdAt)}
-          </p>
+          <h4 className="text-sm font-medium text-gray-500">Data da inscrição</h4>
+          {createdAt ? (
+            <p className="text-gray-900">{formatDate(createdAt)}</p>
+          ) : (
+            <Skeleton className="h-5 w-3/4" />
+          )}
         </div>
       </CardContent>
     </Card>

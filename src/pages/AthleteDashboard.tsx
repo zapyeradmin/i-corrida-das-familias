@@ -9,6 +9,7 @@ import AthleteInfoCard from '@/components/dashboard/AthleteInfoCard';
 import RegistrationInfoCard from '@/components/dashboard/RegistrationInfoCard';
 import EventInfoCard from '@/components/dashboard/EventInfoCard';
 import StatusBanner from '@/components/dashboard/StatusBanner';
+import { LogOut } from 'lucide-react';
 
 const AthleteDashboard = () => {
   const { athlete, logout } = useAthleteAuth();
@@ -20,14 +21,21 @@ const AthleteDashboard = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-700 to-blue-900">
       <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-blue-700">Minha Inscrição</h1>
-            <Button variant="outline" onClick={handleLogout}>Sair</Button>
+          <div className="flex justify-between items-center mb-6 bg-blue-800/40 p-4 rounded-lg backdrop-blur-sm shadow-lg">
+            <h1 className="text-3xl font-bold text-white">Minha Inscrição</h1>
+            <Button 
+              variant="outline" 
+              onClick={handleLogout}
+              className="bg-white/10 text-white hover:bg-white/20 border-white/30 backdrop-blur-sm flex items-center gap-2"
+            >
+              <LogOut size={16} />
+              Sair
+            </Button>
           </div>
           
           <StatusBanner paymentStatus={athlete?.payment_status} />

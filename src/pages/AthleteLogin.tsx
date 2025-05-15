@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
+import { UserRound, Lock } from 'lucide-react';
 
 const AthleteLogin = () => {
   const [email, setEmail] = useState('');
@@ -43,58 +44,66 @@ const AthleteLogin = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-700 to-blue-900">
       <Navbar />
       
       <div className="flex-grow flex items-center justify-center px-4 py-12">
-        <Card className="w-full max-w-md shadow-xl">
-          <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-2xl font-bold text-blue-700">Área do Atleta</CardTitle>
-            <CardDescription>
+        <Card className="w-full max-w-md shadow-2xl bg-white/90 backdrop-blur-sm border-blue-200">
+          <CardHeader className="space-y-2 text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg">
+            <CardTitle className="text-2xl font-bold">Área do Atleta</CardTitle>
+            <CardDescription className="text-blue-100">
               Acesse os detalhes da sua inscrição
             </CardDescription>
           </CardHeader>
           
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
+          <CardContent className="p-6">
+            <form onSubmit={handleLogin} className="space-y-5">
               <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">E-mail</label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="Digite o email cadastrado"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+                <label htmlFor="email" className="text-sm font-medium text-gray-700">E-mail</label>
+                <div className="relative">
+                  <UserRound className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 h-5 w-5" />
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="Digite o email cadastrado"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="pl-10 border-blue-200 focus:border-blue-500"
+                    required
+                  />
+                </div>
               </div>
               
               <div className="space-y-2">
-                <label htmlFor="cpf" className="text-sm font-medium">
+                <label htmlFor="cpf" className="text-sm font-medium text-gray-700">
                   Senha (3 primeiros dígitos do CPF)
                 </label>
-                <Input
-                  id="cpf"
-                  type="text"
-                  placeholder="Exemplo: 123"
-                  maxLength={3}
-                  value={cpfPrefix}
-                  onChange={(e) => setCpfPrefix(e.target.value.replace(/\D/g, ''))}
-                  required
-                />
-                <p className="text-xs text-gray-500 mt-1">
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500 h-5 w-5" />
+                  <Input
+                    id="cpf"
+                    type="text"
+                    placeholder="Exemplo: 123"
+                    maxLength={3}
+                    value={cpfPrefix}
+                    onChange={(e) => setCpfPrefix(e.target.value.replace(/\D/g, ''))}
+                    className="pl-10 border-blue-200 focus:border-blue-500"
+                    required
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1 italic">
                   Para acessar, digite os 3 primeiros dígitos do CPF cadastrado no momento da inscrição.
                 </p>
               </div>
               
               <Button 
                 type="submit" 
-                className="w-full"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-2 rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white mr-2" />
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2" />
                     Acessando...
                   </div>
                 ) : (
