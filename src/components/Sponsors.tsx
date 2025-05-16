@@ -45,15 +45,17 @@ const Sponsors = () => {
         '/lovable-uploads/3ac8134f-1592-456b-a06b-6cdcccd05a90.png', // César Kaique
         '/lovable-uploads/3494bf1b-6a0b-4c1c-9ae9-2e61309b37c3.png', // Tech Zone
         '/lovable-uploads/ab332979-20ec-45ad-9e09-9dcc16313b84.png', // Leidejane
+        '/lovable-uploads/406d0212-14c6-47f9-bb84-4c0bb47983f3.png', // Geladão Nogueira
+        '/lovable-uploads/2c07c5d6-b628-46ff-89da-336337c208f3.png', // Renan Nogueira
       ];
 
       const sponsorNames = [
         'Zapyer', 'JN Suplementos', 'Brotinhos', 'Cultura FM', 'Hortfruti Santo Antônio', 'Grupo Pinheirinho',
         'Azul Cargo Express', 'CrediFácil Promotora', 'CEFITT', 'Tratores Pajeu', 'Vereador Tercio Siqueira', 'TS Construtora',
-        'Bilisq', 'Alpha', 'Márcia', 'César Kaique', 'Tech Zone', 'Leidejane'
+        'Bilisq', 'Alpha', 'Márcia', 'César Kaique', 'Tech Zone', 'Leidejane', 'Geladão Nogueira', 'Renan Nogueira'
       ];
 
-      // Criar os 18 patrocinadores com as novas imagens
+      // Criar os 20 patrocinadores com as novas imagens
       const updatedSponsors = sponsorNames.map((name, i) => {
         return {
           id: i + 1,
@@ -62,9 +64,9 @@ const Sponsors = () => {
         };
       });
 
-      // Adicionar os patrocinadores 19-24 (placeholders)
-      const colors = ['3B82F6', '10B981', 'F59E0B', 'EC4899', '8B5CF6', '6366F1'];
-      for (let i = 18; i < 24; i++) {
+      // Adicionar os patrocinadores 21-24 (placeholders)
+      const colors = ['3B82F6', '10B981', 'F59E0B', 'EC4899'];
+      for (let i = 20; i < 24; i++) {
         const colorIndex = i % colors.length;
         updatedSponsors.push({
           id: i + 1,
