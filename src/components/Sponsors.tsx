@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -27,7 +26,7 @@ const Sponsors = () => {
 
       // Carregar as imagens atualizadas dos patrocinadores
       const sponsorImages = [
-        '/lovable-uploads/62f57e6e-be4d-479c-9e89-c72c424f7f50.png', // Zapyer (atualizada)
+        '/lovable-uploads/49c797a9-3e44-408d-bec2-34ea3baaf0dd.png', // Zapyer (revertida)
         '/lovable-uploads/13c7321e-f573-4136-91d5-a1701fe19531.png', // JN Suplementos
         '/lovable-uploads/43524a1f-c523-4290-9fcf-8b77c8c43c18.png', // Brotinhos
         '/lovable-uploads/2cf388de-8697-4297-aab6-023b8d730209.png', // Cultura FM
@@ -49,13 +48,13 @@ const Sponsors = () => {
         '/lovable-uploads/2c07c5d6-b628-46ff-89da-336337c208f3.png', // Renan Nogueira
       ];
 
+      // Criar os 20 patrocinadores com as novas imagens
       const sponsorNames = [
         'Zapyer', 'JN Suplementos', 'Brotinhos', 'Cultura FM', 'Hortfruti Santo Antônio', 'Grupo Pinheirinho',
         'Azul Cargo Express', 'CrediFácil Promotora', 'CEFITT', 'Tratores Pajeu', 'Vereador Tercio Siqueira', 'TS Construtora',
         'Bilisq', 'Alpha', 'Márcia', 'César Kaique', 'Tech Zone', 'Leidejane', 'Geladão Nogueira', 'Renan Nogueira'
       ];
 
-      // Criar os 20 patrocinadores com as novas imagens
       const updatedSponsors = sponsorNames.map((name, i) => {
         return {
           id: i + 1,

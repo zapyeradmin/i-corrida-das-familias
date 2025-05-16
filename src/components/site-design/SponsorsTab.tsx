@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -25,7 +24,7 @@ const SponsorsTab = () => {
   useEffect(() => {
     // Inicializar com os novos patrocinadores
     const sponsorImages = [
-      '/lovable-uploads/62f57e6e-be4d-479c-9e89-c72c424f7f50.png', // Zapyer (atualizada)
+      '/lovable-uploads/49c797a9-3e44-408d-bec2-34ea3baaf0dd.png', // Zapyer (revertida)
       '/lovable-uploads/13c7321e-f573-4136-91d5-a1701fe19531.png', // JN Suplementos
       '/lovable-uploads/43524a1f-c523-4290-9fcf-8b77c8c43c18.png', // Brotinhos
       '/lovable-uploads/2cf388de-8697-4297-aab6-023b8d730209.png', // Cultura FM
