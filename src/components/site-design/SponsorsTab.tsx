@@ -23,14 +23,14 @@ const SponsorsTab = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    // Initialize with placeholder sponsors
+    // Initialize with placeholder sponsors - using 21 sponsors to match the frontend display
     const colors = [
       '3B82F6', '10B981', 'F59E0B', 'EC4899', 
       '8B5CF6', '6366F1', 'D946EF', '0EA5E9', 
       'F97316', 'EF4444'
     ];
     
-    const initialSponsors = Array.from({ length: 20 }, (_, i) => {
+    const initialSponsors = Array.from({ length: 21 }, (_, i) => {
       const colorIndex = i % colors.length;
       return {
         id: i + 1,

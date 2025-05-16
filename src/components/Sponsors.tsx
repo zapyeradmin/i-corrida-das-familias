@@ -1,19 +1,20 @@
+
 import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
 import { supabase } from '@/integrations/supabase/client';
-import 'swiper/css';
-import 'swiper/css/pagination';
+
 interface Sponsor {
   id: number;
   name: string;
   imageUrl: string;
 }
+
 const Sponsors = () => {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  
   useEffect(() => {
     // Generate placeholder sponsors with different colors
     const colors = ['3B82F6', '10B981', 'F59E0B', 'EC4899', '8B5CF6', '6366F1', 'D946EF', '0EA5E9', 'F97316', 'EF4444'];
+    
     const loadSponsors = async () => {
       // In a real implementation, we would fetch sponsors from Supabase
       // const { data, error } = await supabase
@@ -28,7 +29,7 @@ const Sponsors = () => {
 
       // For now, load placeholders
       const initialSponsors = Array.from({
-        length: 20
+        length: 21
       }, (_, i) => {
         const colorIndex = i % colors.length;
         return {
@@ -37,11 +38,34 @@ const Sponsors = () => {
           imageUrl: `https://placehold.co/220x120/${colors[colorIndex]}/FFFFFF?text=Patrocinador+${i + 1}`
         };
       });
+      
       setSponsors(initialSponsors);
     };
+    
     loadSponsors();
   }, []);
-  return <section id="sponsors" className="pt-20 md:pt-28 pb-16 md:pb-20 bg-gray-100 overflow-hidden">
+
+  // Divide sponsors into three rows
+  const firstRow = sponsors.slice(0, 7);
+  const secondRow = sponsors.slice(7, 14);
+  const thirdRow = sponsors.slice(14, 21);
+
+  const renderSponsorRow = (rowSponsors: Sponsor[]) => (
+    <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8 mb-8">
+      {rowSponsors.map(sponsor => (
+        <div key={sponsor.id} className="flex items-center justify-center">
+          <img 
+            src={sponsor.imageUrl} 
+            alt={`Logo ${sponsor.name}`} 
+            className="max-h-24 max-w-44 object-contain transition-transform hover:scale-105" 
+          />
+        </div>
+      ))}
+    </div>
+  );
+
+  return (
+    <section id="sponsors" className="pt-20 md:pt-28 pb-16 md:pb-20 bg-gray-100 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
           Nossos <span className="gradient-text">Parceiros</span>
@@ -50,38 +74,15 @@ const Sponsors = () => {
           Agradecemos a todos os patrocinadores que tornam este evento possível e apoiam o esporte em nossa cidade.
         </p>
         
-        <div className="px-2 mb-12">
-          <Swiper slidesPerView={2} spaceBetween={25} pagination={{
-          clickable: true,
-          bulletActiveClass: 'bg-event-orange opacity-100',
-          bulletClass: 'swiper-pagination-bullet bg-event-orange opacity-60 w-3 h-3'
-        }} autoplay={{
-          delay: 3000,
-          disableOnInteraction: false
-        }} loop={true} modules={[Pagination, Autoplay]} breakpoints={{
-          640: {
-            slidesPerView: 3,
-            spaceBetween: 30
-          },
-          768: {
-            slidesPerView: 4,
-            spaceBetween: 35
-          },
-          1024: {
-            slidesPerView: 5,
-            spaceBetween: 45
-          },
-          1280: {
-            slidesPerView: 6,
-            spaceBetween: 50
-          }
-        }} className="pb-12">
-            {sponsors.map(sponsor => <SwiperSlide key={sponsor.id}>
-                <div className="h-40 flex items-center justify-center">
-                  <img src={sponsor.imageUrl} alt={`Logo ${sponsor.name}`} className="max-h-28 max-w-52 object-contain transition-transform hover:scale-105" />
-                </div>
-              </SwiperSlide>)}
-          </Swiper>
+        <div className="mb-12">
+          {/* First row - Patrocinadores 1 ao 7 */}
+          {renderSponsorRow(firstRow)}
+          
+          {/* Second row - Patrocinadores 8 ao 14 */}
+          {renderSponsorRow(secondRow)}
+          
+          {/* Third row - Patrocinadores 15 ao 21 */}
+          {renderSponsorRow(thirdRow)}
         </div>
 
         <div className="text-center">
@@ -96,6 +97,8 @@ const Sponsors = () => {
           </a>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Sponsors;
