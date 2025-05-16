@@ -72,7 +72,7 @@ const SponsorsTab = () => {
   
   // Function to edit sponsor
   const openEditDialog = (sponsor: Sponsor) => {
-    setEditingSponsor(sponsor);
+    setEditingSponsor({...sponsor});
     setIsDialogOpen(true);
   };
   
