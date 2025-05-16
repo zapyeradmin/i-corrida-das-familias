@@ -107,7 +107,7 @@ const Sponsors = () => {
           Nossos <span className="gradient-text">Parceiros</span>
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-          Agradecemos a todos os patrocinadores que tornam este evento possível e apoiam o esporte em nossa cidade.
+          Agradecemos a todos os patrocinadores e apoiadores que tornam este evento possível e apoiam o esporte em nossa cidade.
         </p>
         
         <div className="mb-12">
