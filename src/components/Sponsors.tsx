@@ -29,7 +29,7 @@ const Sponsors = () => {
 
       // For now, load placeholders
       const initialSponsors = Array.from({
-        length: 21
+        length: 24
       }, (_, i) => {
         const colorIndex = i % colors.length;
         return {
@@ -45,10 +45,11 @@ const Sponsors = () => {
     loadSponsors();
   }, []);
 
-  // Divide sponsors into three rows
-  const firstRow = sponsors.slice(0, 7);
-  const secondRow = sponsors.slice(7, 14);
-  const thirdRow = sponsors.slice(14, 21);
+  // Divide sponsors into four rows
+  const firstRow = sponsors.slice(0, 6);
+  const secondRow = sponsors.slice(6, 12);
+  const thirdRow = sponsors.slice(12, 18);
+  const fourthRow = sponsors.slice(18, 24);
 
   const renderSponsorRow = (rowSponsors: Sponsor[]) => (
     <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 lg:gap-8 mb-8">
@@ -75,14 +76,17 @@ const Sponsors = () => {
         </p>
         
         <div className="mb-12">
-          {/* First row - Patrocinadores 1 ao 7 */}
+          {/* First row - Patrocinadores 1 ao 6 */}
           {renderSponsorRow(firstRow)}
           
-          {/* Second row - Patrocinadores 8 ao 14 */}
+          {/* Second row - Patrocinadores 7 ao 12 */}
           {renderSponsorRow(secondRow)}
           
-          {/* Third row - Patrocinadores 15 ao 21 */}
+          {/* Third row - Patrocinadores 13 ao 18 */}
           {renderSponsorRow(thirdRow)}
+          
+          {/* Fourth row - Patrocinadores 19 ao 24 */}
+          {renderSponsorRow(fourthRow)}
         </div>
 
         <div className="text-center">
