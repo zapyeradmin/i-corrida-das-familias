@@ -1,9 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
+import heroBackground from '@/assets/hero-background.jpg';
 
 const Hero = () => {
-  const [backgroundImage, setBackgroundImage] = useState('/lovable-uploads/5ee1b807-0626-4575-bef4-27435d64a983.png');
+  const [backgroundImage, setBackgroundImage] = useState(heroBackground);
   
   // In a real implementation, we would fetch the hero image from Supabase
   // useEffect(() => {
