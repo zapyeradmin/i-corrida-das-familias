@@ -93,7 +93,7 @@ export const useAthletesData = () => {
         throw new Error('Usuário não autenticado');
       }
       
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('athletes')
         .select('*')
         .order('created_at', { ascending: false });
@@ -115,7 +115,7 @@ export const useAthletesData = () => {
   // Update athlete information
   const updateAthlete = async (updatedAthlete: Athlete) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('athletes')
         .update({
           full_name: updatedAthlete.full_name,
@@ -146,7 +146,7 @@ export const useAthletesData = () => {
   // Confirm payment status
   const confirmPayment = async (athleteId: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('athletes')
         .update({ 
           payment_status: 'CONFIRMED',
@@ -168,7 +168,7 @@ export const useAthletesData = () => {
   // Delete athlete
   const deleteAthlete = async (athleteId: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('athletes')
         .delete()
         .eq('id', athleteId);
