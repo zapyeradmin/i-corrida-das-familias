@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
+import { PremiumHero as Hero } from '@/components/ui/hero';
 import About from '@/components/About';
 import KitsAtletas from '@/components/KitsAtletas';
 import Timeline from '@/components/Timeline';
