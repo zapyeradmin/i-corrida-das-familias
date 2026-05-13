@@ -62,7 +62,7 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
         return false;
       }
 
-      const { data, error } = await supabase.rpc('verify_athlete_token', { token });
+      const { data, error } = await (supabase as any).rpc('verify_athlete_token', { token });
       
       if (error) {
         console.error('Erro na verificação do token:', error);
@@ -105,7 +105,7 @@ export const AthleteAuthProvider = ({ children }: { children: React.ReactNode })
     try {
       console.log(`Tentando login para: ${email} com prefixo: ${cpfPrefix}`);
       
-      const { data, error } = await supabase.rpc('athlete_login', {
+      const { data, error } = await (supabase as any).rpc('athlete_login', {
         email_input: email.trim().toLowerCase(),
         cpf_prefix: cpfPrefix.trim()
       });
