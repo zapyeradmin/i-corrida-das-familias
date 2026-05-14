@@ -42,14 +42,14 @@ const FAQ = () => {
             Ao clicar em "Confirmar Inscrição", você será redirecionado para a página de pagamento da InfinityPay, onde poderá finalizar sua inscrição.
           </p>
           <p>
-            Após o pagamento via PIX ou cartão de crédito, envie o comprovante para o nosso WhatsApp (87) 99670-9355 ou clique no link: <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe seus dados para que possamos confirmar sua inscrição no sistema. Seguindo esses passos, sua inscrição estará confirmada.
+            Após o pagamento via PIX ou cartão de crédito, envie o comprovante para o nosso WhatsApp (87) 99670-9355 ou clique no link: <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe seus dados para que possamos confirmar sua inscrição no sistema. Seguindo esses passos, sua inscrição estará confirmada.
           </p>
         </>
   }, {
     question: "4. Como posso realizar a inscrição da minha família?",
     answer: <>
           <p className="mb-4">
-            Entre em contato pelo WhatsApp (87) 99670-9355 ou clique no link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe que deseja realizar uma inscrição familiar.
+            Entre em contato pelo WhatsApp (87) 99670-9355 ou clique no link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe que deseja realizar uma inscrição familiar.
           </p>
           <p className="mb-4">
             Enviaremos os dados necessários para preenchimento. Após preenchê-los, você nos retorna com as informações, e então encaminharemos o link de pagamento. Cada integrante da família deve ser incluído no pagamento (R$ 47,00 por inscrição).
@@ -61,7 +61,7 @@ const FAQ = () => {
   }, {
     question: "5. Como posso confirmar minha inscrição?",
     answer: <p>
-          Após preencher o formulário "Inscreva-se e Participe!", envie o comprovante de pagamento para o WhatsApp (87) 99670-9355 ou clique no link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe seus dados. Confirmaremos sua inscrição no sistema após a verificação do pagamento.
+          Após preencher o formulário "Inscreva-se e Participe!", envie o comprovante de pagamento para o WhatsApp (87) 99670-9355 ou clique no link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">http://wa.me/5587996709355</a> (João Victor Franco) e informe seus dados. Confirmaremos sua inscrição no sistema após a verificação do pagamento.
         </p>
   }, {
     question: "6. Como saber se minha inscrição está confirmada?",
@@ -69,23 +69,23 @@ const FAQ = () => {
           <p className="mb-4">Você pode acessar sua página pessoal clicando no menu superior do site, clicando em ÁREA DO ATLETA, que levará à página de login do atleta. Basta inserir seu e-mail cadastrado e os três primeiros dígitos do seu CPF.</p>
           <p className="mb-4">
             Ao acessar seu perfil, será exibido o status da inscrição: Pendente ou Confirmada.
-            Se estiver como Pendente, clique no botão "Falar com o Suporte" e envie o comprovante de pagamento para o WhatsApp (87) 99670-9355 ou pelo link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">http://wa.me/5587996709355</a> (João Victor Franco), informando seus dados.
+            Se estiver como Pendente, clique no botão "Falar com o Suporte" e envie o comprovante de pagamento para o WhatsApp (87) 99670-9355 ou pelo link <a href="http://wa.me/5587996709355" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">http://wa.me/5587996709355</a> (João Victor Franco), informando seus dados.
           </p>
           <p>
             Dessa forma, sua inscrição será verificada e confirmada.
           </p>
         </>
   }];
-  return <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-blue-800 to-indigo-900 text-white">
+  return <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-brand-primary to-brand-dark text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-2 bg-blue-600 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center p-2 bg-brand-primary rounded-full mb-4">
             <MessageCircleQuestion className="h-8 w-8 text-white" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-poppins">
             <span className="text-white">Perguntas</span> <span className="text-orange-400">Frequentes</span>
           </h2>
-          <p className="text-lg text-blue-100 max-w-2xl mx-auto">
+          <p className="text-lg text-brand-light max-w-2xl mx-auto">
             Encontre respostas para as dúvidas mais comuns sobre a Corrida das Famílias
           </p>
         </div>
@@ -94,7 +94,7 @@ const FAQ = () => {
           <div className="bg-white rounded-xl overflow-hidden">
             <Accordion type="single" collapsible className="w-full divide-y divide-gray-100">
               {faqItems.map((item, index) => <AccordionItem key={index} value={`item-${index}`} className="border-none">
-                  <AccordionTrigger className="flex justify-between items-center w-full py-5 px-6 text-left font-medium text-gray-800 hover:text-blue-700 hover:bg-blue-50/50 transition-all">
+                  <AccordionTrigger className="flex justify-between items-center w-full py-5 px-6 text-left font-medium text-gray-800 hover:text-brand-primary hover:bg-brand-light/50 transition-all">
                     <span className="text-lg">{item.question}</span>
                   </AccordionTrigger>
                   <AccordionContent className="text-gray-700 px-6 pb-6 pt-2 leading-relaxed">

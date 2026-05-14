@@ -44,7 +44,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex flex-col items-center justify-center px-4 py-6 sm:p-6">
+    <div className="min-h-screen bg-gradient-to-br from-brand-primary to-white flex flex-col items-center justify-center px-4 py-6 sm:p-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-6">
           <img 
@@ -56,7 +56,7 @@ const Auth = () => {
         </div>
         
         <Card className="border-0 shadow-lg overflow-hidden">
-          <div className="h-2 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700"></div>
+          <div className="h-2 bg-gradient-to-r from-brand-primary via-brand-primary to-brand-primary"></div>
           <CardHeader className="space-y-1 text-center pb-2 px-4 md:px-6">
             <CardTitle className="text-xl md:text-2xl font-bold text-gray-800">
               Bem-vindo de volta!
@@ -119,7 +119,7 @@ const Auth = () => {
 
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:from-blue-600 hover:to-blue-800 transition-all duration-300 py-5 text-sm md:text-base font-medium"
+                className="w-full bg-gradient-to-r from-brand-primary via-brand-primary to-brand-primary hover:from-brand-primary hover:to-brand-primary transition-all duration-300 py-5 text-sm md:text-base font-medium"
                 disabled={loading}
               >
                 {loading ? 'Processando...' : 'Entrar'}

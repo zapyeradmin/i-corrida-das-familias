@@ -49,7 +49,7 @@ const Hero = () => {
         </div>
         
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight font-poppins tracking-tight lg:text-6xl">
-          1ª CORRIDA <span className="text-blue-400">DAS FAMÍLIAS</span> 2025
+          1ª CORRIDA <span className="text-brand-light">DAS FAMÍLIAS</span> 2025
         </h1>
         
         <p className="text-lg sm:text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-gray-200 leading-relaxed">

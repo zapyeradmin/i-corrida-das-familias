@@ -42,12 +42,12 @@ const Navbar = () => {
         
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center space-x-2 lg:space-x-6">
-          <a href="#about" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Sobre</a>
-          <a href="#kits" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Kits</a>
-          <a href="#timeline" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Cronograma</a>
-          <a href="#course" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Percurso</a>
-          <a href="#sponsors" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Patrocinadores</a>
-          <a href="#registration" className="nav-link text-white hover:text-blue-300 transition-colors px-2 py-1 text-sm lg:text-base">Inscrição</a>
+          <a href="#about" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Sobre</a>
+          <a href="#kits" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Kits</a>
+          <a href="#timeline" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Cronograma</a>
+          <a href="#course" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Percurso</a>
+          <a href="#sponsors" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Patrocinadores</a>
+          <a href="#registration" className="nav-link text-white hover:text-brand-light transition-colors px-2 py-1 text-sm lg:text-base">Inscrição</a>
           
           {/* Add NavbarExtensions here */}
           <NavbarExtensions />
@@ -86,12 +86,12 @@ const Navbar = () => {
             </button>
           </div>
           <div className="flex-1 flex flex-col justify-center items-center gap-6 py-8">
-            <a href="#about" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Sobre</a>
-            <a href="#kits" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Kits</a>
-            <a href="#timeline" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Cronograma</a>
-            <a href="#course" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Percurso</a>
-            <a href="#sponsors" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Patrocinadores</a>
-            <a href="#registration" className="text-xl text-white hover:text-blue-300 transition-colors py-2" onClick={closeMenu}>Inscrição</a>
+            <a href="#about" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Sobre</a>
+            <a href="#kits" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Kits</a>
+            <a href="#timeline" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Cronograma</a>
+            <a href="#course" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Percurso</a>
+            <a href="#sponsors" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Patrocinadores</a>
+            <a href="#registration" className="text-xl text-white hover:text-brand-light transition-colors py-2" onClick={closeMenu}>Inscrição</a>
             
             {/* Add Dashboard or Login link based on auth state */}
             <div className="py-2">

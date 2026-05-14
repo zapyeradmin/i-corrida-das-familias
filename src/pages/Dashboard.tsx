@@ -61,7 +61,7 @@ const Dashboard = () => {
               </Button>
             </Link>
             <Link to="/site-design">
-              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 font-poppins tracking-wide shadow-md hover:shadow-lg transition-all duration-300">
+              <Button className="bg-gradient-to-r from-brand-primary to-brand-dark hover:from-brand-primary hover:to-brand-dark font-poppins tracking-wide shadow-md hover:shadow-lg transition-all duration-300">
                 <Palette className="h-4 w-4 mr-2" />
                 Design do Site
               </Button>
