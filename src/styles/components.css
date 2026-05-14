@@ -132,16 +132,16 @@
 
 /* Registration section */
 .registration-section {
-  background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 50%, #60A5FA 100%);
+  background: linear-gradient(135deg, #16091f 0%, #431181 50%, #830bc2 100%);
 }
 
 /* Register button */
 .register-button {
-  background: linear-gradient(to right, #2563EB, #3B82F6);
+  background: linear-gradient(to right, #431181, #ff5300);
   transition: all 0.3s ease;
 }
 
 .register-button:hover {
-  background: linear-gradient(to right, #1D4ED8, #2563EB);
+  background: linear-gradient(to right, #16091f, #ff5300);
   transform: translateY(-2px);
 }
