@@ -12,7 +12,7 @@ const EventInfoCard: React.FC = () => {
           <Calendar className="h-5 w-5" />
           <CardTitle className="text-lg font-medium">Informações do Evento</CardTitle>
         </div>
-        <CardDescription className="text-blue-50">
+        <CardDescription className="text-brand-light">
           Corrida das Famílias 2025
         </CardDescription>
       </CardHeader>
