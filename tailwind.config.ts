@@ -68,15 +68,26 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				event: {
-					orange: '#F97316',
-					blue: '#2563EB',
-					'blue-light': '#60A5FA',
-					'blue-dark': '#1E40AF',
+					orange: '#ff5300',
+					blue: '#431181',
+					'blue-light': '#830bc2',
+					'blue-dark': '#16091f',
 					red: '#EF4444',
-					purple: '#8B5CF6',
+					purple: '#480c70',
 					teal: '#14B8A6',
-					royal: '#1E3A8A',
-				}
+					royal: '#16091f',
+				},
+				brand: {
+					primary: 'hsl(var(--brand-primary))',
+					secondary: 'hsl(var(--brand-secondary))',
+					dark: 'hsl(var(--brand-dark))',
+					light: 'hsl(var(--brand-light))',
+				},
+				surface: {
+					1: 'hsl(var(--bg-1))',
+					2: 'hsl(var(--bg-2))',
+					3: 'hsl(var(--bg-3))',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
