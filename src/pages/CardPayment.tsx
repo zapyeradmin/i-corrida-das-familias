@@ -38,15 +38,15 @@ const CardPayment = () => {
               Complete seu pagamento para confirmar sua inscrição na 1ª Corrida das Famílias 2025
             </p>
             <div className="mt-2 md:mt-4">
-              <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 rounded-full bg-blue-100 text-blue-800 text-xs md:text-sm">
+              <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-2 rounded-full bg-brand-light text-brand-primary text-xs md:text-sm">
                 <span className="mr-2">●</span> Aguardando pagamento
               </div>
             </div>
           </div>
 
           <Card className="shadow-xl border-t-4 border-event-blue mb-6 md:mb-8 overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-blue-50 to-white py-3 md:py-6">
-              <CardTitle className="text-lg md:text-2xl text-center text-blue-800">Inscrição Individual</CardTitle>
+            <CardHeader className="bg-gradient-to-r from-brand-primary to-white py-3 md:py-6">
+              <CardTitle className="text-lg md:text-2xl text-center text-brand-primary">Inscrição Individual</CardTitle>
               <CardDescription className="text-center text-xs md:text-base">
                 1ª Corrida das Famílias 2025
               </CardDescription>
@@ -54,7 +54,7 @@ const CardPayment = () => {
             
             <CardContent className="flex flex-col items-center space-y-5 md:space-y-8 p-4 md:p-8">
               {/* Payment Amount */}
-              <div className="bg-blue-600 text-white w-full py-3 px-4 rounded-lg text-center shadow-md">
+              <div className="bg-brand-primary text-white w-full py-3 px-4 rounded-lg text-center shadow-md">
                 <h3 className="text-base md:text-xl font-semibold">Valor da Inscrição</h3>
                 <p className="text-xl md:text-3xl font-bold mt-1 md:mt-2">R$ 47,00</p>
                 <p className="text-xs md:text-sm mt-1 opacity-90">Realize o pagamento clicando no botão abaixo</p>
@@ -77,7 +77,7 @@ const CardPayment = () => {
               </Button>
             </CardContent>
             
-            <CardFooter className="flex flex-col space-y-3 md:space-y-6 p-4 md:p-6 bg-gradient-to-b from-white to-blue-50">
+            <CardFooter className="flex flex-col space-y-3 md:space-y-6 p-4 md:p-6 bg-gradient-to-b from-white to-brand-primary">
               <div className="bg-yellow-50 p-3 md:p-4 rounded-lg w-full text-xs md:text-sm border border-yellow-100">
                 <p className="font-medium text-yellow-800 flex items-start mb-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5 mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -94,7 +94,7 @@ const CardPayment = () => {
               </div>
               
               <Button 
-                className="w-full bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all py-5 md:py-6 text-xs md:text-base" 
+                className="w-full bg-brand-primary hover:bg-brand-primary shadow-lg hover:shadow-xl transition-all py-5 md:py-6 text-xs md:text-base" 
                 onClick={() => window.open("http://wa.me/5587996709355", "_blank")}
               >
                 <ExternalLink className="mr-2 h-4 w-4 md:h-5 md:w-5" />

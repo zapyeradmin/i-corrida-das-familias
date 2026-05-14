@@ -49,13 +49,13 @@ const AthleteInfoCard: React.FC<AthleteInfoCardProps> = ({
   };
 
   return (
-    <Card className="overflow-hidden border-t-4 border-blue-500 shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition-shadow">
-      <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+    <Card className="overflow-hidden border-t-4 border-brand-primary shadow-lg bg-white/90 backdrop-blur-sm hover:shadow-xl transition-shadow">
+      <CardHeader className="bg-gradient-to-r from-brand-primary to-brand-primary text-white">
         <div className="flex items-center gap-2">
           <User className="h-5 w-5" />
           <CardTitle className="text-lg font-medium">Dados do Atleta</CardTitle>
         </div>
-        <CardDescription className="text-blue-100">
+        <CardDescription className="text-brand-light">
           Informações pessoais do participante
         </CardDescription>
       </CardHeader>

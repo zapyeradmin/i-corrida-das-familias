@@ -182,7 +182,7 @@ export const PremiumHero = () => {
             transition={{ duration: 0.8 }}
             className="mb-6"
           >
-            <span className="inline-block bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/30 backdrop-blur-sm text-cyan-200 text-xs md:text-sm font-semibold px-4 py-2 rounded-full uppercase tracking-[0.2em]">
+            <span className="inline-block bg-gradient-to-r from-brand-secondary to-brand-primary/20 border border-brand-secondary backdrop-blur-sm text-brand-secondary text-xs md:text-sm font-semibold px-4 py-2 rounded-full uppercase tracking-[0.2em]">
               09 de agosto de 2026
             </span>
           </motion.div>
@@ -198,7 +198,7 @@ export const PremiumHero = () => {
               {aiTitles.map((title, index) => (
                 <motion.span
                   key={index}
-                  className="absolute bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent"
+                  className="absolute bg-gradient-to-r from-brand-secondary via-brand-secondary to-brand-primary bg-clip-text text-transparent"
                   initial={{ opacity: 0, y: 100 }}
                   transition={{ type: "spring", stiffness: 50 }}
                   animate={
@@ -232,7 +232,7 @@ export const PremiumHero = () => {
             <Button
               asChild
               size="lg"
-              className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white border-0 shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.8)] transition-all"
+              className="group bg-gradient-to-r from-brand-secondary to-brand-primary hover:from-brand-secondary hover:to-brand-primary text-white border-0 shadow-[0_0_30px_-5px_rgba(34,211,238,0.5)] hover:shadow-[0_0_40px_-5px_rgba(34,211,238,0.8)] transition-all"
             >
               <a href="#registration">
                 Inscreva-se Agora

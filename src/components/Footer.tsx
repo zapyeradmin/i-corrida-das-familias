@@ -33,22 +33,22 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4">Links Rápidos</h4>
             <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 text-sm">
               <li>
-                <a href="#about" className="hover:text-blue-300 transition-colors">
+                <a href="#about" className="hover:text-brand-light transition-colors">
                   Sobre o Evento
                 </a>
               </li>
               <li>
-                <a href="#timeline" className="hover:text-blue-300 transition-colors">
+                <a href="#timeline" className="hover:text-brand-light transition-colors">
                   Cronograma
                 </a>
               </li>
               <li>
-                <a href="#course" className="hover:text-blue-300 transition-colors">
+                <a href="#course" className="hover:text-brand-light transition-colors">
                   Percurso
                 </a>
               </li>
               <li>
-                <a href="#registration" className="hover:text-blue-300 transition-colors">
+                <a href="#registration" className="hover:text-brand-light transition-colors">
                   Inscreva-se
                 </a>
               </li>
@@ -71,7 +71,7 @@ const Footer = () => {
             &copy; {currentYear} Corrida das Famílias. por Zapyer Soluções em Tecnologia. Todos os direitos reservados. 
             <span className="flex items-center">
               Desenvolvido com 
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline mx-1 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline mx-1 text-brand-light" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z" />
               </svg>
               .
