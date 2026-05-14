@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import heroBackground from "@/assets/hero-background.jpg";
 
 interface Beam {
   x: number;
@@ -163,14 +164,15 @@ export const PremiumHero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white"
+      className="relative min-h-screen w-full overflow-hidden bg-[#050505] text-white bg-cover bg-center"
+      style={{ backgroundImage: `url(${heroBackground})` }}
     >
-      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full mix-blend-screen opacity-60" />
       <canvas
         ref={noiseRef}
         className="absolute inset-0 h-full w-full opacity-40 mix-blend-overlay pointer-events-none"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 pointer-events-none" />
 
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4 md:px-8">
         <div className="max-w-5xl mx-auto text-center">
