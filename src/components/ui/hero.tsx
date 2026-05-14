@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { MoveRight } from "lucide-react";
+import heroBackground from "@/assets/hero-background.jpg";
 
 interface Beam {
   x: number;
